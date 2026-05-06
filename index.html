@@ -4,85 +4,96 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ink:#1a1209;--paper:#faf7f2;--paper2:#f2ece0;--red:#b83232;--gold:#9a7210;
-  --sage:#3d6b3d;--muted:#7a6e60;--border:#d8ccb8;--dim:#b0a090;
+  --sage:#3d6b3d;--muted:#7a6e60;--border:#d8ccb8;--dim:#b0a090;--veg:#2e7d32;
 }
-body{font-family:'Noto Sans TC',sans-serif;background:var(--paper);color:var(--ink);font-size:14px;line-height:1.6}
+html{font-size:15px}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-text-size-adjust:100%}
 
-/* HEADER */
-.hdr{background:var(--ink);color:var(--paper);padding:0;position:sticky;top:0;z-index:200;border-bottom:2px solid var(--red)}
-.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
-.hdr-ttl{font-family:'Noto Serif TC',serif;font-size:17px;font-weight:700;letter-spacing:3px}
-.hdr-sub{font-size:10px;color:#9a8878;letter-spacing:2px;margin-top:2px}
-.hdr-meta{font-size:10px;color:#9a8878;text-align:right;line-height:1.8}
+.hdr{background:var(--ink);color:var(--paper);position:sticky;top:0;z-index:200;border-bottom:2px solid var(--red)}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;gap:8px}
+.hdr-ttl{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:700;letter-spacing:2px}
+.hdr-sub{font-size:9px;color:#9a8878;letter-spacing:2px;margin-top:1px}
+.hdr-meta{font-size:9px;color:#9a8878;text-align:right;line-height:1.8}
 
-/* TABS */
 .tabs{background:#111;display:flex;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #2a2a2a}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex-shrink:0;padding:9px 14px;font-size:11px;color:#666;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;font-family:'Noto Sans TC',sans-serif;letter-spacing:.5px}
+.tab{flex-shrink:0;padding:9px 12px;font-size:11px;color:#666;cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;font-family:'Noto Sans TC',sans-serif;letter-spacing:.5px;-webkit-tap-highlight-color:transparent}
 .tab:hover{color:#ccc}
 .tab.on{color:#f0e0d0;border-bottom-color:var(--red)}
 
-/* HERO */
-.hero{background:linear-gradient(150deg,#1a1209,#2d1f0e,#1a1209);padding:32px 16px 24px;text-align:center;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif TC',serif;font-size:140px;font-weight:700;color:rgba(255,255,255,.03);pointer-events:none;letter-spacing:12px}
-.htag{display:inline-block;font-size:9px;letter-spacing:4px;color:var(--red);border:1px solid var(--red);padding:3px 12px;margin-bottom:12px}
-.htitle{font-family:'Noto Serif TC',serif;font-size:clamp(28px,7vw,44px);font-weight:700;color:#f0e0d0;letter-spacing:4px;margin-bottom:4px}
-.hsub{font-size:11px;color:#9a8878;letter-spacing:2px;margin-bottom:24px}
-.hstats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
-.hstat-n{font-family:'Noto Serif TC',serif;font-size:26px;color:#f0e0d0;display:block;font-weight:700}
-.hstat-l{font-size:10px;color:#7a6e60;letter-spacing:1px}
+.hero{background:linear-gradient(150deg,#1a1209,#2d1f0e,#1a1209);padding:28px 16px 22px;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif TC',serif;font-size:120px;font-weight:700;color:rgba(255,255,255,.03);pointer-events:none;letter-spacing:10px}
+.htag{display:inline-block;font-size:9px;letter-spacing:3px;color:var(--red);border:1px solid var(--red);padding:3px 10px;margin-bottom:10px}
+.htitle{font-family:'Noto Serif TC',serif;font-size:clamp(26px,7vw,42px);font-weight:700;color:#f0e0d0;letter-spacing:3px;margin-bottom:4px}
+.hsub{font-size:10px;color:#9a8878;letter-spacing:2px;margin-bottom:20px}
+.hstats{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.hstat-n{font-family:'Noto Serif TC',serif;font-size:22px;color:#f0e0d0;display:block;font-weight:700}
+.hstat-l{font-size:9px;color:#7a6e60;letter-spacing:1px}
 
-/* CHIPS */
-.chips{background:var(--paper2);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
-.chip{font-size:10px;padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:var(--paper);color:var(--muted);white-space:nowrap}
+.chips{background:var(--paper2);border-bottom:1px solid var(--border);padding:8px 14px;display:flex;gap:5px;flex-wrap:wrap;justify-content:center}
+.chip{font-size:10px;padding:3px 9px;border-radius:20px;border:1px solid var(--border);background:var(--paper);color:var(--muted);white-space:nowrap}
 .chip.hi{background:var(--ink);color:#f0e0d0;border-color:var(--ink)}
+.chip.veg{background:#e8f5e9;color:var(--veg);border-color:#a5d6a7}
 
-/* MAIN */
-.main{max-width:760px;margin:0 auto;padding:0 14px 60px}
-.section{display:none;animation:fadeUp .3s ease}
+/* HOTEL BANNER */
+.hotel-banner{background:var(--paper2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0;padding:10px 14px;margin:16px 0 0;font-size:12px;line-height:1.75}
+.hotel-banner strong{color:var(--ink);font-size:13px}
+.hotel-tag{display:inline-block;font-size:9px;padding:1px 7px;border-radius:2px;margin-left:6px;font-weight:500}
+.ht-bnb{background:#ffe0d6;color:#c13515;border:1px solid #f5b8a5}
+.ht-loc{background:#e3f2fd;color:#1565c0;border:1px solid #90caf9}
+
+.main{max-width:700px;margin:0 auto;padding:0 14px 60px}
+.section{display:none;animation:fadeUp .25s ease}
 .section.on{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
-/* OVERVIEW */
-.ov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:20px 0}
-.ov-card{background:var(--paper);border:1px solid var(--border);border-radius:3px;padding:14px 14px 14px 18px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
+.ov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:9px;margin:16px 0}
+.ov-card{background:var(--paper);border:1px solid var(--border);border-radius:3px;padding:12px 12px 12px 16px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;-webkit-tap-highlight-color:transparent}
 .ov-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--border);transition:background .18s}
-.ov-card:hover{border-color:var(--ink);background:var(--paper2)}
-.ov-card:hover::before{background:var(--red)}
-.ov-dl{font-size:9px;letter-spacing:3px;color:var(--red);font-weight:500;margin-bottom:5px}
-.ov-dn{font-family:'Noto Serif TC',serif;font-size:17px;font-weight:600;margin-bottom:3px}
-.ov-dd{font-size:11px;color:var(--muted);margin-bottom:8px}
+.ov-card:hover::before,.ov-card:active::before{background:var(--red)}
+.ov-card:hover,.ov-card:active{border-color:#a09080;background:var(--paper2)}
+.ov-dl{font-size:9px;letter-spacing:2px;color:var(--red);font-weight:500;margin-bottom:4px}
+.ov-dn{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:600;margin-bottom:2px}
+.ov-dd{font-size:10px;color:var(--muted);margin-bottom:6px}
 .ov-tags{display:flex;flex-wrap:wrap;gap:3px}
-.ov-tag{font-size:9px;padding:2px 7px;border:1px solid var(--border);border-radius:20px;color:var(--muted);background:var(--paper2)}
-.info-box{background:var(--paper2);border:1px solid var(--border);border-left:3px solid var(--gold);padding:12px 14px;margin:16px 0;font-size:12px;color:var(--muted);line-height:1.8}
+.ov-tag{font-size:9px;padding:2px 6px;border:1px solid var(--border);border-radius:20px;color:var(--muted);background:var(--paper2)}
+.ov-tag.vt{background:#e8f5e9;color:var(--veg);border-color:#a5d6a7}
 
-/* DAY */
-.day-hdr{padding:24px 0 16px;border-bottom:1px solid var(--border);margin-bottom:20px}
-.day-num{font-size:9px;letter-spacing:4px;color:var(--red);font-weight:500;margin-bottom:4px}
-.day-ttl{font-family:'Noto Serif TC',serif;font-size:clamp(22px,5vw,30px);font-weight:700;letter-spacing:2px;margin-bottom:3px}
-.day-dt{font-size:11px;color:var(--muted);letter-spacing:1px}
-.weather{display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);margin-top:8px;background:var(--paper2);padding:3px 10px;border-radius:20px;border:1px solid var(--border)}
+.info-box{background:var(--paper2);border:1px solid var(--border);border-left:3px solid var(--gold);padding:11px 13px;margin:14px 0;font-size:12px;color:var(--muted);line-height:1.8}
 
-/* PROGRESS */
-.progress-wrap{margin:4px 0 16px;display:flex;align-items:center;gap:10px}
-.progress-bar{flex:1;height:3px;background:var(--border);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:var(--red);border-radius:3px;transition:width .4s ease}
-.progress-txt{font-size:10px;color:var(--muted);white-space:nowrap}
+.stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:16px 0}
+@media(min-width:480px){.stat-row{grid-template-columns:repeat(4,1fr)}}
+.stat-card{background:var(--paper2);border:1px solid var(--border);border-radius:3px;padding:10px 12px;text-align:center}
+.stat-n{font-family:'Noto Serif TC',serif;font-size:20px;font-weight:700;color:var(--ink);display:block}
+.stat-l{font-size:9px;color:var(--muted);letter-spacing:.5px;margin-top:2px}
 
-/* TIMELINE */
-.tl{position:relative;padding-left:26px}
+.day-hdr{padding:22px 0 14px;border-bottom:1px solid var(--border);margin-bottom:16px}
+.day-num{font-size:9px;letter-spacing:3px;color:var(--red);font-weight:500;margin-bottom:3px}
+.day-ttl{font-family:'Noto Serif TC',serif;font-size:clamp(20px,5vw,28px);font-weight:700;letter-spacing:2px;margin-bottom:3px}
+.day-dt{font-size:11px;color:var(--muted);letter-spacing:.5px}
+.weather{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);margin-top:7px;background:var(--paper2);padding:3px 9px;border-radius:20px;border:1px solid var(--border)}
+
+.prog-wrap{margin:4px 0 14px;display:flex;align-items:center;gap:10px}
+.prog-bar{flex:1;height:3px;background:var(--border);border-radius:3px;overflow:hidden}
+.prog-fill{height:100%;background:var(--red);border-radius:3px;transition:width .4s ease}
+.prog-txt{font-size:10px;color:var(--muted);white-space:nowrap;min-width:36px}
+
+.tl{position:relative;padding-left:24px}
 .tl::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--border)}
-.ev{position:relative;margin-bottom:14px}
-.ev::before{content:'';position:absolute;left:-23px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--paper);border:1.5px solid var(--border)}
-.ev.star::before{background:var(--red);border-color:var(--red);width:9px;height:9px;left:-24px;top:6px}
-.ev-card{background:var(--paper);border:1px solid var(--border);border-radius:3px;padding:12px 14px;transition:border-color .18s;position:relative}
-.ev-card:hover{border-color:#a09080}
-.ev-time{font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:3px}
-.ev-name{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:600;margin-bottom:3px}
-.ev-desc{font-size:12px;color:var(--muted);line-height:1.75;margin-bottom:8px}
-.ev-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
+.ev{position:relative;margin-bottom:12px}
+.ev::before{content:'';position:absolute;left:-21px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--paper);border:1.5px solid var(--border)}
+.ev.star::before{background:var(--red);border-color:var(--red);width:9px;height:9px;left:-22px;top:6px}
+.ev.vev::before{background:#a5d6a7;border-color:var(--veg)}
+
+.ev-card{background:var(--paper);border:1px solid var(--border);border-radius:3px;padding:11px 12px;position:relative}
+.ev-card.veg-card{border-left:3px solid #a5d6a7}
+.ev-time{font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:2px}
+.ev-name{font-family:'Noto Serif TC',serif;font-size:15px;font-weight:600;margin-bottom:3px}
+.ev-desc{font-size:12px;color:var(--muted);line-height:1.75;margin-bottom:7px}
+.ev-veg{font-size:11px;color:var(--veg);background:#e8f5e9;border:1px solid #a5d6a7;border-radius:2px;padding:4px 9px;margin-bottom:7px;line-height:1.6}
+.ev-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px}
 .badges{display:flex;flex-wrap:wrap;gap:3px}
-.bd{font-size:9px;padding:2px 7px;border-radius:2px;letter-spacing:.3px}
+.bd{font-size:9px;padding:2px 6px;border-radius:2px;letter-spacing:.3px}
 .bd-food{background:#fef3e2;color:#7a4f0a;border:1px solid #f0d898}
 .bd-temple{background:#f0ece8;color:#4a3020;border:1px solid #d0b898}
 .bd-nature{background:#eef3ec;color:#2a4a2a;border:1px solid #a8c8a8}
@@ -90,64 +101,66 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--paper);color:var(--i
 .bd-onsen{background:#e8eef8;color:#182858;border:1px solid #a0b8d8}
 .bd-move{background:#f0f0ee;color:#404040;border:1px solid #c8c8c0}
 .bd-hotel{background:#f8f0f8;color:#401840;border:1px solid #c8a0c8}
+.bd-veg{background:#e8f5e9;color:var(--veg);border:1px solid #a5d6a7}
 
-/* CHECK BUTTON */
-.chk-btn{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);background:var(--paper);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.chk-btn{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);background:var(--paper);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;-webkit-tap-highlight-color:transparent}
 .chk-btn.done{background:var(--sage);border-color:var(--sage)}
 .chk-btn svg{width:10px;height:10px;display:none}
 .chk-btn.done svg{display:block}
-.ev-card.done-card{opacity:.5}
+.ev-card.done-card{opacity:.45}
 
-/* TIPS */
-.tips{background:var(--ink);color:#f0e0d0;border-radius:3px;padding:14px 16px;margin:18px 0 0}
+.tips{background:var(--ink);color:#f0e0d0;border-radius:3px;padding:13px 15px;margin:16px 0 0}
 .tips h4{font-family:'Noto Serif TC',serif;font-size:13px;margin-bottom:8px;letter-spacing:1px}
 .tips li{font-size:11px;color:#9a8878;padding:3px 0 3px 14px;position:relative;line-height:1.65}
 .tips li::before{content:'—';position:absolute;left:0;color:var(--red)}
 .tips ul{list-style:none;padding:0}
 
-/* BACK */
-.back{display:inline-block;margin-top:20px;font-size:11px;letter-spacing:2px;color:var(--muted);cursor:pointer;padding:5px 0;border-bottom:1px solid var(--border);transition:color .18s}
+.sec-ttl{font-size:9px;letter-spacing:4px;color:var(--muted);margin:22px 0 11px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.back{display:inline-block;margin-top:18px;font-size:11px;letter-spacing:2px;color:var(--muted);cursor:pointer;padding:5px 0;border-bottom:1px solid var(--border);transition:color .18s;-webkit-tap-highlight-color:transparent}
 .back:hover{color:var(--ink)}
 
-/* SECTION TITLE */
-.sec-ttl{font-size:9px;letter-spacing:4px;color:var(--muted);margin:24px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-
-/* PACKING LIST */
-.pack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-bottom:12px}
-.pack-item{display:flex;align-items:center;gap:8px;font-size:12px;cursor:pointer;padding:6px 10px;border:1px solid var(--border);border-radius:3px;background:var(--paper);transition:all .2s;user-select:none}
-.pack-item:hover{background:var(--paper2)}
-.pack-item.checked{opacity:.45;text-decoration:line-through}
+/* PACKING */
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:7px;margin-bottom:10px}
+.pack-item{display:flex;align-items:center;gap:7px;font-size:11px;cursor:pointer;padding:7px 9px;border:1px solid var(--border);border-radius:3px;background:var(--paper);transition:all .2s;user-select:none;-webkit-tap-highlight-color:transparent}
+.pack-item:active{background:var(--paper2)}
+.pack-item.checked{opacity:.4;text-decoration:line-through}
 .pack-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .pack-item.checked .pack-dot{background:var(--sage);border-color:var(--sage)}
 
-/* SUMMARY STATS */
-.stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin:20px 0}
-.stat-card{background:var(--paper2);border:1px solid var(--border);border-radius:3px;padding:12px 14px;text-align:center}
-.stat-n{font-family:'Noto Serif TC',serif;font-size:22px;font-weight:700;color:var(--ink);display:block}
-.stat-l{font-size:10px;color:var(--muted);letter-spacing:.5px;margin-top:2px}
+/* AIRBNB SECTION */
+.bnb-card{background:var(--paper);border:1px solid var(--border);border-radius:3px;padding:14px 15px;margin-bottom:10px}
+.bnb-card h3{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:600;margin-bottom:6px}
+.bnb-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.bnb-info{font-size:11px;color:var(--muted);line-height:1.8}
+.bnb-crit{font-size:11px;color:var(--ink);background:var(--paper2);border:1px solid var(--border);border-radius:2px;padding:8px 10px;line-height:1.8}
+.bnb-badge{display:inline-block;font-size:9px;padding:2px 7px;border-radius:2px;margin:2px 2px 2px 0;font-weight:500}
+.bb-must{background:#fff3e0;color:#7a4500;border:1px solid #ffcc80}
+.bb-nice{background:#e8f5e9;color:var(--veg);border:1px solid #a5d6a7}
+.btn-bnb{display:inline-block;margin-top:10px;font-size:11px;padding:6px 14px;border:1px solid var(--border);border-radius:2px;color:var(--ink);cursor:pointer;background:var(--paper2);transition:all .18s;text-decoration:none}
+.btn-bnb:hover{background:var(--ink);color:#f0e0d0;border-color:var(--ink)}
 
-/* FOOTER */
-.ftr{background:var(--ink);color:#555;text-align:center;padding:20px;font-size:10px;letter-spacing:2px;border-top:1px solid #222;margin-top:40px}
+.ftr{background:var(--ink);color:#555;text-align:center;padding:18px;font-size:9px;letter-spacing:2px;border-top:1px solid #222;margin-top:30px}
 </style>
 
 <div class="hdr">
   <div class="hdr-top">
     <div>
       <div class="hdr-ttl">關西七日遊</div>
-      <div class="hdr-sub">KANSAI 2027</div>
+      <div class="hdr-sub">KANSAI 2027 · 2/1–2/7</div>
     </div>
-    <div class="hdr-meta">2027年 2/1 — 2/7<br>3–5人 · 悠閒深度遊</div>
+    <div class="hdr-meta">5人出行 · 含素食<br>悠閒深度遊</div>
   </div>
   <div class="tabs" id="tabs">
-    <button class="tab on" onclick="go('overview',this)">總覽</button>
-    <button class="tab" onclick="go('d1',this)">Day 1</button>
-    <button class="tab" onclick="go('d2',this)">Day 2</button>
-    <button class="tab" onclick="go('d3',this)">Day 3</button>
-    <button class="tab" onclick="go('d4',this)">Day 4</button>
-    <button class="tab" onclick="go('d5',this)">Day 5</button>
-    <button class="tab" onclick="go('d6',this)">Day 6</button>
-    <button class="tab" onclick="go('d7',this)">Day 7</button>
-    <button class="tab" onclick="go('pack',this)">清單</button>
+    <button class="tab on" onclick="go('overview',0)">總覽</button>
+    <button class="tab" onclick="go('d1',1)">Day 1</button>
+    <button class="tab" onclick="go('d2',2)">Day 2</button>
+    <button class="tab" onclick="go('d3',3)">Day 3</button>
+    <button class="tab" onclick="go('d4',4)">Day 4</button>
+    <button class="tab" onclick="go('d5',5)">Day 5</button>
+    <button class="tab" onclick="go('d6',6)">Day 6</button>
+    <button class="tab" onclick="go('d7',7)">Day 7</button>
+    <button class="tab" onclick="go('stay',8)">住宿</button>
+    <button class="tab" onclick="go('pack',9)">清單</button>
   </div>
 </div>
 
@@ -159,342 +172,363 @@ body{font-family:'Noto Sans TC',sans-serif;background:var(--paper);color:var(--i
   <div class="hstats">
     <div><span class="hstat-n">7</span><span class="hstat-l">天數</span></div>
     <div><span class="hstat-n">5</span><span class="hstat-l">城市</span></div>
-    <div><span class="hstat-n" id="spot-count">28+</span><span class="hstat-l">景點</span></div>
     <div><span class="hstat-n" id="done-count">0</span><span class="hstat-l">已打卡</span></div>
+    <div><span class="hstat-n">梅花</span><span class="hstat-l">當季</span></div>
   </div>
 </div>
 
 <div class="chips">
   <span class="chip hi">✈ 關西機場進出</span>
-  <span class="chip">🍜 美食</span>
+  <span class="chip veg">🥬 鍋邊素友善</span>
+  <span class="chip">♨ 溫泉</span>
   <span class="chip">⛩ 神社寺廟</span>
   <span class="chip">🛍 藥妝</span>
-  <span class="chip">♨ 溫泉</span>
   <span class="chip">🌸 梅花季</span>
-  <span class="chip">🏔 自然健行</span>
 </div>
 
 <div class="main">
 
 <!-- OVERVIEW -->
 <div id="overview" class="section on">
-  <div class="sec-ttl">七天行程總覽</div>
   <div class="stat-row">
     <div class="stat-card"><span class="stat-n" id="s-done">0</span><span class="stat-l">已完成景點</span></div>
-    <div class="stat-card"><span class="stat-n" id="s-total">28</span><span class="stat-l">景點總數</span></div>
+    <div class="stat-card"><span class="stat-n" id="s-total">30</span><span class="stat-l">景點總數</span></div>
+    <div class="stat-card"><span class="stat-n">2處</span><span class="stat-l">Airbnb住宿</span></div>
     <div class="stat-card"><span class="stat-n">5–10°C</span><span class="stat-l">預測氣溫</span></div>
-    <div class="stat-card"><span class="stat-n">梅花季</span><span class="stat-l">當季亮點</span></div>
   </div>
+
+  <div class="hotel-banner">
+    <strong>🏠 住宿計畫</strong>
+    <span class="hotel-tag ht-bnb">Airbnb · 5人3床</span><br>
+    <span style="font-size:12px;color:var(--muted)">
+    📍 <b>前4晚（2/1–2/4）</b> 大阪市中心（梅田/難波/天王寺）— 交通四通八達，方便進出和歌山、京都<br>
+    📍 <b>後3晚（2/5–2/7前）</b> 京都市內（2/5–2/6）＋ 2/6晚轉 關西機場周邊（泉佐野/臨空城）— 確保 2/7 早班機
+    </span>
+  </div>
+
+  <div class="sec-ttl">七天行程總覽</div>
   <div class="ov-grid" id="ov-grid"></div>
   <div class="info-box">
-    💡 2月初為<b>梅花季</b>，京都北野天滿宮、和歌山南部梅林皆盛開。氣溫約 5–10°C，建議攜帶保暖外套與雨具。各城市以新幹線或特急移動，建議購買 <b>JR Pass 關西廣域版（7日）</b>約 ¥15,000，可自由搭乘。
+    💡 <b>JR Pass 關西廣域版（7日）</b>可搭乘 JR + 特急くろしお（和歌山）+ Haruka（機場）+ 新幹線（岡山方向）。🥬 每天均設有<b>鍋邊素</b>可選餐廳，詳見各天行程。
   </div>
 </div>
 
-<!-- DAY 1 -->
+<!-- DAYS injected by JS -->
 <div id="d1" class="section"></div>
-<!-- DAY 2 -->
 <div id="d2" class="section"></div>
-<!-- DAY 3 -->
 <div id="d3" class="section"></div>
-<!-- DAY 4 -->
 <div id="d4" class="section"></div>
-<!-- DAY 5 -->
 <div id="d5" class="section"></div>
-<!-- DAY 6 -->
 <div id="d6" class="section"></div>
-<!-- DAY 7 -->
 <div id="d7" class="section"></div>
+
+<!-- STAY -->
+<div id="stay" class="section">
+  <div class="sec-ttl">AIRBNB 住宿選擇指南</div>
+
+  <div class="bnb-card">
+    <h3>🏠 第一住宿：大阪市中心</h3>
+    <div class="bnb-info">入住 2/1（Day1）· 退房 2/5（Day4晚）· <b>4晚</b></div>
+    <div class="bnb-row">
+      <div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:5px;letter-spacing:1px">MUST HAVE</div>
+        <span class="bnb-badge bb-must">5人入住</span>
+        <span class="bnb-badge bb-must">3間臥室</span>
+        <span class="bnb-badge bb-must">廚房（素食者加熱用）</span>
+        <span class="bnb-badge bb-must">近JR/地鐵</span>
+        <span class="bnb-badge bb-must">洗衣機</span>
+      </div>
+      <div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:5px;letter-spacing:1px">NICE TO HAVE</div>
+        <span class="bnb-badge bb-nice">免費停車</span>
+        <span class="bnb-badge bb-nice">行李寄放</span>
+        <span class="bnb-badge bb-nice">自助check-in</span>
+      </div>
+    </div>
+    <div class="bnb-crit">
+      <b>推薦區域：</b><br>
+      · <b>難波/心齋橋周邊</b> — 餐廳、藥妝最密集，步行即達道頓堀<br>
+      · <b>天王寺周邊</b> — 較平靜，至和歌山、奈良、京都 JR 直達<br>
+      · <b>梅田/大阪站周邊</b> — 交通最方便，日系百貨齊全<br>
+      <br><b>搜尋關鍵字：</b>「大阪 難波 3寝室 / 3 bedrooms Osaka Namba entire apartment 5 guests」
+    </div>
+    <a class="btn-bnb" href="https://www.airbnb.com.tw/s/Namba--Osaka/homes?adults=5&min_bedrooms=3" target="_blank">開啟 Airbnb 搜尋 ↗</a>
+  </div>
+
+  <div class="bnb-card">
+    <h3>🏠 第二住宿：關西機場周邊</h3>
+    <div class="bnb-info">入住 2/6（Day6）· 退房 2/7 早晨 · <b>1晚</b></div>
+    <div class="bnb-row">
+      <div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:5px;letter-spacing:1px">MUST HAVE</div>
+        <span class="bnb-badge bb-must">5人入住</span>
+        <span class="bnb-badge bb-must">3間臥室</span>
+        <span class="bnb-badge bb-must">機場30分內</span>
+        <span class="bnb-badge bb-must">早班機友善</span>
+      </div>
+      <div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:5px;letter-spacing:1px">ALTERNATIVE</div>
+        <span class="bnb-badge bb-nice">關西機場旁飯店</span>
+        <span class="bnb-badge bb-nice">接駁車服務</span>
+      </div>
+    </div>
+    <div class="bnb-crit">
+      <b>推薦區域：</b><br>
+      · <b>泉佐野市</b> — 距機場最近的住宅區，JR 日根野站周邊有整棟出租<br>
+      · <b>臨空城（Rinku Town）</b> — 機場對岸，步行或單站電車可達，有大型商場<br>
+      · <b>機場直連飯店（備案）</b> — 關西機場内 ANA Crowne Plaza 或 Nikko Airport，若 Airbnb 難訂可改住飯店<br>
+      <br><b>⚠️ 注意：</b>12:20 飛機建議 09:20 抵達機場，需預留交通緩衝時間
+    </div>
+    <a class="btn-bnb" href="https://www.airbnb.com.tw/s/Sennan--Osaka/homes?adults=5&min_bedrooms=3" target="_blank">開啟 Airbnb 搜尋 ↗</a>
+  </div>
+  <span class="back" onclick="go('overview',0)">← 返回總覽</span>
+</div>
 
 <!-- PACKING -->
 <div id="pack" class="section">
   <div class="sec-ttl">行前打包清單</div>
-  <div id="pack-progress" class="progress-wrap">
-    <div class="progress-bar"><div class="progress-fill" id="pack-fill" style="width:0%"></div></div>
-    <div class="progress-txt" id="pack-txt">0 / 0</div>
+  <div class="prog-wrap">
+    <div class="prog-bar"><div class="prog-fill" id="pack-fill" style="width:0%"></div></div>
+    <div class="prog-txt" id="pack-txt">0 / 0</div>
   </div>
   <div id="pack-container"></div>
-  <span class="back" onclick="go('overview', document.querySelector('.tab'))">← 返回總覽</span>
+  <span class="back" onclick="go('overview',0)">← 返回總覽</span>
 </div>
 
-</div><!-- /main -->
-
-<div class="ftr">關西七日遊 2027 · 2/1–2/7 · 悠閒深度行</div>
+</div>
+<div class="ftr">關西七日遊 2027 · 2/1–2/7 · 5人悠閒深度行 · 🥬 鍋邊素友善</div>
 
 <script>
-const DAYS = [
-  {
-    id:'d1', label:'DAY 1 · 2/1 MON', title:'抵達·和歌山',
-    loc:'關西機場 → 和歌山市', weather:'🌤 5–9°C · 晴時多雲',
-    tags:['♨ 溫泉','🏯 和歌山城'],
-    events:[
-      {time:'AM 抵台出發',name:'搭機抵達關西機場',desc:'辦理入境、提取行李，在機場換取 JR Pass 或購買 ICOCA 交通卡。關西機場入境大廳有多家換匯與便利商店。',badges:['bd-move|✈ 交通'],star:false},
-      {time:'PM 14:00',name:'和歌山城',desc:'白色優美天守閣，居高眺望市區。城內梅園2月初飄香，悠閒散步感受冬末寧靜。入場費 ¥410。',badges:['bd-temple|🏯 古蹟','bd-nature|🌸 梅花'],star:true},
-      {time:'PM 17:00',name:'黑潮市場·晚餐',desc:'和歌山港邊海鮮市場，品嚐現撈龍蝦、鮪魚、伊勢海老。建議點海鮮丼或鮮魚定食，新鮮度絕佳。',badges:['bd-food|🦞 海鮮','bd-food|🍣 壽司'],star:false},
-      {time:'PM 19:00',name:'入住溫泉旅館',desc:'推薦白浜或和歌山市內溫泉飯店。泡湯消除飛行疲勞，享受正宗關西溫泉旅館服務。',badges:['bd-onsen|♨ 溫泉','bd-hotel|🏨 住宿'],star:true},
-    ],
-    tips:['關西機場 → 和歌山：搭乘 JR 阪和線特急「くろしお」約 1 小時','建議在機場 7-Eleven 補充零食、準備現金','和歌山冬天日落約 17:30，城堡建議 16:00 前入場']
-  },
-  {
-    id:'d2', label:'DAY 2 · 2/2 TUE', title:'熊野古道·世界遺産',
-    loc:'和歌山縣', weather:'🌥 4–8°C · 偶有薄霧',
-    tags:['🏔 健行','🦞 海鮮','⛩ 世界遺産'],
-    events:[
-      {time:'AM 09:00',name:'熊野古道·大門坂',desc:'世界遺産「紀伊山地の霊場と参詣道」核心路段。石板古道兩側杉木參天，靈氣十足。大門坂約2公里老少皆宜，無需登山裝備。',badges:['bd-nature|🏔 健行','bd-temple|⛩ 世界遺産'],star:true},
-      {time:'AM 11:00',name:'熊野那智大社·那智瀑布',desc:'日本三大瀑布之一，落差133公尺壯觀。朱紅三重塔與瀑布同框，熊野最具代表性風景。',badges:['bd-temple|⛩ 神社','bd-nature|💧 瀑布'],star:true},
-      {time:'PM 13:00',name:'午餐·山菜定食',desc:'品嚐和歌山特有「めはり寿司」（醃菜包飯糰）或山菜定食，當地風味獨特。',badges:['bd-food|🍱 定食'],star:false},
-      {time:'PM 15:00',name:'南部梅林',desc:'日本最大規模梅林，2月初正值盛開。一望無際白梅與粉梅香氣四溢，約2–3小時慢慢遊逛。',badges:['bd-nature|🌸 梅花季'],star:true},
-    ],
-    tips:['熊野古道健行建議穿防滑鞋，石板路濕滑','南部梅林開放 08:00–17:00，入園費 ¥500','くまの木の葉餅是當地特色伴手禮']
-  },
-  {
-    id:'d3', label:'DAY 3 · 2/3 WED', title:'大阪初探',
-    loc:'和歌山 → 大阪市', weather:'☀ 6–11°C · 晴',
-    tags:['🍜 美食','🛍 購物','🏯 大阪城'],
-    events:[
-      {time:'AM 10:00',name:'大阪城公園',desc:'梅林2月盛開約1200株，天守閣可登頂俯瞰市區。旁有 MIRAIZA 購物中心可休息用餐。',badges:['bd-temple|🏯 古蹟','bd-nature|🌸 梅花'],star:true},
-      {time:'PM 12:00',name:'黑門市場·午餐',desc:'大阪廚房，邊走邊吃串燒、海鮮、玉子燒、河豚。大聲熱鬧的市場文化是大阪特色，每攤都充滿活力。',badges:['bd-food|🍢 串燒','bd-food|🦑 海鮮'],star:false},
-      {time:'PM 14:00',name:'心齋橋·藥妝掃貨',desc:'松本清、大國藥妝、BIC CAMERA 集中地。建議事先列清單，把握退稅優惠（當日消費 ¥5000 以上免稅）。',badges:['bd-shop|🛍 藥妝','bd-shop|💊 購物'],star:true},
-      {time:'PM 18:00',name:'道頓堀夜遊·晚餐',desc:'霓虹燈倒映運河的標誌性大阪夜景。推薦：一蘭拉麵、元祖串炸（二度沾醬禁止！）、大阪燒。',badges:['bd-food|🍜 拉麵','bd-food|🍡 串炸'],star:true},
-    ],
-    tips:['和歌山 → 大阪：JR 特急「くろしお」約 1 小時 15 分','心齋橋退稅需護照，建議隨身攜帶','道頓堀週末人潮多，晚餐 18:00 前入座較佳']
-  },
-  {
-    id:'d4', label:'DAY 4 · 2/4 THU', title:'京都古都',
-    loc:'大阪 → 京都', weather:'🌤 4–9°C · 晴時多雲',
-    tags:['⛩ 伏見稻荷','🎋 嵐山','🌸 梅花'],
-    events:[
-      {time:'AM 08:30',name:'伏見稻荷大社',desc:'數千座朱紅鳥居蜿蜒山間。早晨人少最適合深度體驗，可只走前段（30分）或登頂四ツ辻（1.5小時）覽京都全景。',badges:['bd-temple|⛩ 神社','bd-nature|🌲 山林'],star:true},
-      {time:'AM 11:00',name:'伏見·清酒街',desc:'伏見是日本清酒名鄉，月桂冠大倉紀念館可試飲。白壁土藏沿川而行，如畫明信片般靜謐。',badges:['bd-food|🍶 清酒'],star:false},
-      {time:'PM 13:00',name:'午餐·錦市場',desc:'「京都の台所」380公尺室內市場。湯葉、京漬物、抹茶甜點、鰻魚串一路吃過去，每家都精彩。',badges:['bd-food|🍡 京料理','bd-food|🍵 抹茶'],star:false},
-      {time:'PM 14:30',name:'嵐山·竹林小徑',desc:'高聳竹林日光灑落，為京都最夢幻景致。周邊有天龍寺（世界遺産）、渡月橋、嵐山保津川，悠閒漫步2–3小時。',badges:['bd-nature|🎋 竹林','bd-temple|⛩ 寺廟'],star:true},
-    ],
-    tips:['大阪 → 京都：JR 京都線新快速約 28 分','伏見稻荷建議平日早上 8:00 前往，避開人潮','嵐電一日券 ¥700 可搭乘沿線各站']
-  },
-  {
-    id:'d5', label:'DAY 5 · 2/5 FRI', title:'京都深度',
-    loc:'京都市區 · 金閣寺 · 祇園', weather:'☀ 5–10°C · 晴',
-    tags:['⛩ 金閣寺','🎎 祇園','🍵 抹茶'],
-    events:[
-      {time:'AM 09:00',name:'金閣寺（鹿苑寺）',desc:'金箔三層閣倒映鏡湖池中，2月清晨偶有薄雪景色絕倫。入場費 ¥500。',badges:['bd-temple|⛩ 世界遺産'],star:true},
-      {time:'AM 10:30',name:'龍安寺·枯山水石庭',desc:'日本最著名枯山水庭園，15顆石只能同時看到14顆，靜心凝視令人沉澱。冬天少遊客最適合靜思。',badges:['bd-temple|⛩ 寺廟','bd-nature|🪨 庭園'],star:true},
-      {time:'PM 12:30',name:'午餐·先斗町',desc:'京都最具情調小巷，石板路兩側盡是日式小料理店。推薦京懷石套餐或湯豆腐定食。',badges:['bd-food|🍱 懷石料理'],star:false},
-      {time:'PM 14:30',name:'祇園·花見小路',desc:'石板路、茶屋、格子門，2月傍晚偶有藝妓出巡。一保堂茶舖可買正宗抹茶帶回。',badges:['bd-temple|🎎 藝妓','bd-shop|🍵 伴手禮'],star:true},
-      {time:'PM 17:00',name:'北野天滿宮·賞梅',desc:'2月初約1500株早梅盛開，是京都賞梅最佳地點之一。學問之神菅原道真長眠於此。',badges:['bd-temple|⛩ 神社','bd-nature|🌸 梅花'],star:true},
-    ],
-    tips:['金閣寺 → 龍安寺步行約15分，或搭市巴士59號','祇園散步以 16:00–18:00 最有氣氛','一保堂抹茶、鍵善良房葛粉是頂級伴手禮']
-  },
-  {
-    id:'d6', label:'DAY 6 · 2/6 SAT', title:'神戶風情',
-    loc:'京都 → 神戶', weather:'🌤 6–11°C · 晴時多雲',
-    tags:['🥩 神戶牛','🏠 異人館','🌃 夜景'],
-    events:[
-      {time:'AM 10:00',name:'北野異人館街',desc:'明治時代外國商人聚居的洋館街。「風見雞館」最具代表性，紅磚牆與山手異國情調彷彿置身歐洲小鎮。',badges:['bd-temple|🏠 異人館'],star:true},
-      {time:'AM 11:30',name:'南京町·中華街',desc:'日本三大中華街之一。豚饅（肉包）是必吃，邊走邊吃熱騰騰小點心，氣氛歡快熱鬧。',badges:['bd-food|🥟 小吃'],star:false},
-      {time:'PM 13:00',name:'神戶牛·午餐',desc:'世界級和牛品牌。三宮周邊有多間平價鐵板燒午間套餐（約 ¥3000–¥6000），現場炙烤油脂香氣無可比擬。',badges:['bd-food|🥩 神戶牛','bd-food|🍽 鐵板燒'],star:true},
-      {time:'PM 15:00',name:'三宮·藥妝掃貨',desc:'LOFT、藥妝連鎖、神戶元町商店街集中。最後一次大型採購，補齊行李清單。',badges:['bd-shop|🛍 購物','bd-shop|💊 藥妝'],star:false},
-      {time:'PM 18:00',name:'神戶港·夜景',desc:'日本三大夜景之一。美利堅公園散步，遠眺神戶大橋與港灣燈光，浪漫收尾一天。',badges:['bd-nature|🌃 夜景'],star:true},
-    ],
-    tips:['京都 → 神戶：JR 神戶線新快速約 32 分','神戶牛午間套餐比晚間便宜約 30–50%，強烈推薦午餐吃','神戶港到三宮步行約 15 分鐘']
-  },
-  {
-    id:'d7', label:'DAY 7 · 2/7 SUN', title:'岡山·返程',
-    loc:'神戶 → 岡山 → 關西機場', weather:'☀ 6–10°C · 晴',
-    tags:['🌿 後樂園','🏯 岡山城','✈ 返台'],
-    events:[
-      {time:'AM 08:00',name:'新幹線·神戶→岡山',desc:'搭乘山陽新幹線「のぞみ」約35分抵達岡山。寄放行李於岡山站置物櫃後輕裝出發。',badges:['bd-move|🚄 新幹線'],star:false},
-      {time:'AM 09:00',name:'後樂園',desc:'日本三名園之一，江戶時代迴遊式庭園。冬日梅花初綻，白鶴悠然漫步草坪，靜謐非凡。入場費 ¥410。',badges:['bd-nature|🌿 庭園','bd-nature|🌸 梅花'],star:true},
-      {time:'AM 10:30',name:'岡山城（烏城）',desc:'黑色外牆天守閣與後樂園隔旭川相望，別名「烏城」。氣質沉穩，與姬路城白鷺城恰成對比。',badges:['bd-temple|🏯 古蹟'],star:true},
-      {time:'PM 12:00',name:'岡山站·最後午餐',desc:'品嚐岡山名物「祭り寿司」（散壽司）。岡山伴手禮：吉備糰子、白桃果凍等，在車站內一次購足。',badges:['bd-food|🍣 散壽司','bd-shop|🎁 伴手禮'],star:false},
-      {time:'PM 14:00',name:'返回關西機場·回台',desc:'岡山 → 新大阪（新幹線17分）→ 關西機場（特急 Haruka 約50分）。起飛前3小時抵達機場。',badges:['bd-move|✈ 返台'],star:true},
-    ],
-    tips:['岡山 → 關西機場走新大阪中轉，Haruka 特急建議預訂座位','行李可前一天在神戶站寄送至機場（空港配送服務）','吉備糰子是岡山最具代表性伴手禮']
-  }
+const DAYS=[
+{id:'d1',label:'DAY 1 · 2/1 MON',title:'抵達·和歌山',loc:'關西機場 → 和歌山',move:'關西機場→和歌山：JR くろしお 約60分',
+weather:'🌤 5–9°C · 晴時多雲',tags:['✈ 抵達','♨ 溫泉','🏯 和歌山城'],
+note:'住宿：大阪市中心 Airbnb（Day1–4）',
+events:[
+{t:'AM 抵台出發',n:'搭機抵達關西機場',d:'辦理入境、換取 JR Pass 關西廣域版、購買 ICOCA 卡。機場有換匯、7-Eleven 補充備用品。',bds:['bd-move|✈ 交通'],star:false,veg:''},
+{t:'PM 14:00',n:'和歌山城',d:'白色天守閣居高眺望市區，城內梅園2月初飄香。入場費 ¥410。',bds:['bd-temple|🏯 古蹟','bd-nature|🌸 梅花'],star:true,veg:''},
+{t:'PM 16:30',n:'黑潮市場·晚餐',d:'和歌山港邊海鮮市場，現撈龍蝦、鮪魚、伊勢海老。海鮮丼、鮮魚定食新鮮度絕佳。',bds:['bd-food|🦞 海鮮','bd-food|🍣 壽司'],star:false,veg:'🥬 鍋邊素：市場內有精進揚げ物（蔬菜天婦羅）、豆腐料理定食可選，告知「魚介なし」即可。'},
+{t:'PM 19:30',n:'入住大阪 Airbnb',d:'搭 JR 阪和線回大阪，Check in 整棟公寓，5人安頓、整理行李。',bds:['bd-move|🚃 電車','bd-hotel|🏠 Airbnb'],star:false,veg:''},
+],
+tips:['和歌山城旁有免費停車場，但建議全程搭乘大眾運輸','大阪 Airbnb 建議選難波、心齋橋或天王寺附近，至和歌山皆直達','當晚輕鬆安頓，明天才是重頭戲']},
+
+{id:'d2',label:'DAY 2 · 2/2 TUE',title:'熊野古道·世界遺産',loc:'大阪 → 和歌山縣 → 大阪',move:'大阪→紀伊勝浦：JR くろしお 約2.5小時（含等車含早出可接受）',
+weather:'🌥 4–8°C · 偶有薄霧',tags:['🏔 健行','⛩ 世界遺産','🌸 梅花'],
+note:'住宿：大阪市中心 Airbnb（連住）',
+events:[
+{t:'AM 07:30',n:'早出發·搭特急南下',d:'從大阪搭 JR くろしお 前往紀伊勝浦（約2.5小時）。車上欣賞海岸風景，準備一天的健行。',bds:['bd-move|🚃 特急'],star:false,veg:''},
+{t:'AM 10:30',n:'熊野那智大社·那智瀑布',d:'日本三大瀑布之一落差133公尺，朱紅三重塔與瀑布同框，熊野最具代表性風景。',bds:['bd-temple|⛩ 神社','bd-nature|💧 瀑布'],star:true,veg:''},
+{t:'AM 11:30',n:'熊野古道·大門坂',d:'石板古道兩側杉木參天，靈氣十足。大門坂約2公里輕鬆好走，無需登山裝備，老少皆宜。',bds:['bd-nature|🏔 健行','bd-temple|⛩ 世界遺産'],star:true,veg:''},
+{t:'PM 13:30',n:'午餐·那智勝浦',d:'小鎮內有多間定食屋，以當地山菜、豆腐料理為主。',bds:['bd-food|🍱 定食'],star:false,veg:'🥬 鍋邊素：「精進料理」定食（豆腐、山菜、醬菜）是熊野地區特色，告知「肉魚なし」即可，多間食堂可配合。'},
+{t:'PM 15:00',n:'南部梅林',d:'日本最大梅林，2月初白梅粉梅齊放香氣四溢。約2小時慢慢遊逛，入園費 ¥500。',bds:['bd-nature|🌸 梅花季'],star:true,veg:''},
+{t:'PM 18:00',n:'返回大阪',d:'搭 JR 特急返大阪，約2小時，晚餐可在車站便當或回市區覓食。',bds:['bd-move|🚃 返程'],star:false,veg:''},
+],
+tips:['此天行程稍長（單程2.5小時），建議早出發；可搭乘 JR 車上補眠','南部梅林可改在回程前順遊白濱（縮短路程）','熊野古道穿防滑鞋，石板路濕滑']},
+
+{id:'d3',label:'DAY 3 · 2/3 WED',title:'大阪深度探索',loc:'大阪市區 · 道頓堀 · 心齋橋',move:'全天市區步行或地鐵（5–15分）',
+weather:'☀ 6–11°C · 晴',tags:['🍜 美食','🛍 藥妝','🏯 大阪城'],
+note:'住宿：大阪市中心 Airbnb（連住）',
+events:[
+{t:'AM 09:30',n:'大阪城·梅林',d:'梅林2月盛開約1200株，天守閣登頂俯瞰市區。旁有 MIRAIZA 建築可休息用餐。',bds:['bd-temple|🏯 古蹟','bd-nature|🌸 梅花'],star:true,veg:''},
+{t:'PM 12:00',n:'黑門市場·午餐',d:'大阪廚房，邊走邊吃串燒、玉子燒、海鮮。大聲熱鬧的市場文化是大阪特色。',bds:['bd-food|🍢 串燒','bd-food|🦑 海鮮'],star:false,veg:'🥬 鍋邊素：黑門市場內有多攤蔬菜天婦羅（精進揚げ）、玉子燒（蛋素可食）、豆腐甜點。可自由挑選組合。'},
+{t:'PM 14:00',n:'心齋橋·藥妝掃貨',d:'松本清、大國藥妝、BIC CAMERA 集中地。當日消費 ¥5000 以上退稅，記得帶護照。',bds:['bd-shop|🛍 藥妝','bd-shop|💊 購物'],star:true,veg:''},
+{t:'PM 17:30',n:'道頓堀·晚餐',d:'霓虹燈倒映運河的標誌大阪夜景。推薦：一蘭拉麵、元祖串炸（禁二度沾醬！）、大阪燒。',bds:['bd-food|🍜 拉麵','bd-food|🍡 串炸'],star:true,veg:'🥬 鍋邊素：道頓堀「ぼてじゅう」大阪燒有蔬菜口味（野菜焼き）；附近「三松」豆腐懷石有素食套餐可預約。'},
+],
+tips:['心齋橋退稅需護照原件，建議全員帶護照','道頓堀晚餐建議 17:30 前入座，週末人潮龐大','藥妝可集中一人結帳，達 ¥5000 單筆退稅條件']},
+
+{id:'d4',label:'DAY 4 · 2/4 THU',title:'京都古都',loc:'大阪 → 京都（JR 28分）',move:'大阪→京都：JR新快速 28分',
+weather:'🌤 4–9°C · 晴時多雲',tags:['⛩ 伏見稻荷','🎋 嵐山','🌸 梅花'],
+note:'住宿：大阪市中心 Airbnb（最後一晚）',
+events:[
+{t:'AM 08:30',n:'伏見稻荷大社',d:'數千座朱紅鳥居蜿蜒山間。早晨人少最適合深度體驗，可只走前段（30分）或登頂（1.5小時）。',bds:['bd-temple|⛩ 神社','bd-nature|🌲 山林'],star:true,veg:''},
+{t:'AM 11:00',n:'伏見·清酒老街',d:'伏見是清酒名鄉，月桂冠紀念館可試飲。白壁土藏沿川而行，如明信片般靜謐。',bds:['bd-food|🍶 清酒'],star:false,veg:''},
+{t:'PM 13:00',n:'錦市場·午餐',d:'「京都の台所」380公尺室內市場，湯葉、京漬物、抹茶甜點、鰻魚串逐攤品嚐。',bds:['bd-food|🍡 京料理','bd-food|🍵 抹茶'],star:false,veg:'🥬 鍋邊素：錦市場「三木鶏卵」玉子燒、豆腐店「古都芋」炸豆腐、各攤漬物均為純素或蛋素可食。'},
+{t:'PM 14:30',n:'嵐山·竹林小徑',d:'高聳竹林日光灑落，為京都最夢幻景致。天龍寺（世界遺産）、渡月橋、嵐山保津川沿途悠閒2–3小時。',bds:['bd-nature|🎋 竹林','bd-temple|⛩ 寺廟'],star:true,veg:'🥬 鍋邊素：嵐山「野宮神社」旁「竹路庵」有精進素食定食（¥1500，需前一天電話預約）。'},
+{t:'PM 18:00',n:'返回大阪 Airbnb',d:'搭 JR 新快速返大阪（28分），收拾行李準備明天 Check-out，搬至京都第二住宿。',bds:['bd-move|🚃 返程','bd-hotel|🏠 Airbnb'],star:false,veg:''},
+],
+tips:['伏見稻荷到嵐山可搭嵐電（ 嵐山本線）約45分','錦市場週末人多，建議平日或 11:00 前到','嵐山「竹路庵」精進料理需提前預約，素食者必打電話']},
+
+{id:'d5',label:'DAY 5 · 2/5 FRI',title:'京都深度',loc:'大阪退房 → 進駐京都',move:'大阪→京都：JR 28分，市區地鐵+巴士',
+weather:'☀ 5–10°C · 晴',tags:['⛩ 金閣寺','🎎 祇園','🌸 北野梅'],
+note:'住宿：京都市內 Airbnb（Day5–6）',
+events:[
+{t:'AM 09:00',n:'大阪退房·移往京都',d:'大阪 Check-out，搭 JR 新快速到京都（28分），寄放行李後輕裝出發。',bds:['bd-move|🚃 移動','bd-hotel|🏠 Check-out'],star:false,veg:''},
+{t:'AM 10:30',n:'金閣寺（鹿苑寺）',d:'金箔三層閣倒映鏡湖池，2月清晨偶有薄雪景色絕倫。入場費 ¥500。',bds:['bd-temple|⛩ 世界遺産'],star:true,veg:''},
+{t:'AM 11:30',n:'龍安寺·枯山水',d:'日本最著名枯山水庭園，15顆石只能同時看14顆，靜心凝視令人沉澱。',bds:['bd-temple|⛩ 寺廟','bd-nature|🪨 庭園'],star:true,veg:''},
+{t:'PM 13:00',n:'午餐·仁和寺周邊',d:'附近有多家定食屋，以京料理、豆腐鍋為主。',bds:['bd-food|🍱 定食'],star:false,veg:'🥬 鍋邊素：仁和寺山門旁「花矢倉」提供精進料理（全素無肉），需預約，建議前一天在官網預訂午間精進膳（¥3800）。'},
+{t:'PM 14:30',n:'北野天滿宮·賞梅',d:'2月初約1500株早梅盛開，學問之神菅原道真長眠於此，香氣瀰漫。',bds:['bd-temple|⛩ 神社','bd-nature|🌸 梅花'],star:true,veg:''},
+{t:'PM 16:30',n:'祇園·花見小路',d:'石板路茶屋格子門，傍晚偶有藝妓出巡。一保堂茶舖買正宗抹茶伴手禮。',bds:['bd-temple|🎎 藝妓','bd-shop|🍵 伴手禮'],star:true,veg:''},
+{t:'PM 19:00',n:'Check-in 京都 Airbnb',d:'入住京都整棟公寓，享受古都夜晚，附近有超市可採購明天早餐食材。',bds:['bd-hotel|🏠 Airbnb'],star:false,veg:''},
+],
+tips:['金閣寺→龍安寺步行15分，或搭59號巴士','北野天滿宮2月有梅苑開放（¥1200含茶點）','祇園花見小路：禁止攝影進入私人料亭，請遵守標示']},
+
+{id:'d6',label:'DAY 6 · 2/6 SAT',title:'神戶風情',loc:'京都 → 神戶（JR 32分）→ 機場周邊',move:'京都→神戶：JR 新快速 32分｜神戶→泉佐野：電車+南海 約60分',
+weather:'🌤 6–11°C · 晴時多雲',tags:['🥩 神戶牛','🏠 異人館','🌃 夜景'],
+note:'⚠️ 今晚退房京都，入住關西機場周邊（泉佐野）',
+events:[
+{t:'AM 09:30',n:'北野異人館街',d:'明治時代洋館聚集地，「風見雞館」最具代表性，紅磚牆異國情調彷彿歐洲小鎮。',bds:['bd-temple|🏠 異人館'],star:true,veg:''},
+{t:'AM 11:00',n:'南京町·中華街',d:'日本三大中華街之一，豚饅（肉包）必吃，邊走邊吃熱騰騰小點心，氣氛熱鬧。',bds:['bd-food|🥟 小吃'],star:false,veg:'🥬 鍋邊素：南京町有「蔬菜まん（菜饅）」純素包子，以及炸芋圓、豆腐花等街食可選。'},
+{t:'PM 12:30',n:'神戶牛·午餐',d:'三宮周邊平價鐵板燒午間套餐 ¥3000–¥6000，現場炙烤油脂香氣絕佳。',bds:['bd-food|🥩 神戶牛','bd-food|🍽 鐵板燒'],star:true,veg:'🥬 鍋邊素：三宮「MODERNARK」鐵板燒有蔬菜套餐（洋蔥、菇類、季節野菜），素食者可告知不加肉類醬汁。'},
+{t:'PM 14:30',n:'三宮·最後採購',d:'LOFT、神戶元町商店街、藥妝連鎖。今天是最後購物機會，補齊伴手禮清單。',bds:['bd-shop|🛍 購物','bd-shop|💊 藥妝'],star:false,veg:''},
+{t:'PM 16:30',n:'退房京都 Airbnb（寄行李）',d:'事先安排宅急便（ヤマト）將大件行李寄至關西機場，或直接帶至泉佐野住宿。',bds:['bd-move|📦 行李寄送'],star:false,veg:''},
+{t:'PM 18:30',n:'移往泉佐野·Check-in',d:'從三宮搭 JR→南海電鐵至泉佐野（約60分），入住機場周邊 Airbnb，早班機友善。',bds:['bd-move|🚃 移動','bd-hotel|🏠 Airbnb'],star:false,veg:''},
+],
+tips:['神戶牛午餐比晚餐便宜 30–50%，強烈建議午間吃','宅急便(ヤマト)可在便利商店寄出至機場，隔天取件（¥1500–¥2000）','泉佐野有「りんくうアウトレット」大型 outlet，可入住後逛逛']},
+
+{id:'d7',label:'DAY 7 · 2/7 SUN',title:'岡山·返程',loc:'泉佐野 → 岡山 → 關西機場',move:'泉佐野→岡山：南海+新幹線 約1.5小時｜岡山→關西機場：新幹線+Haruka 約1小時20分',
+weather:'☀ 6–10°C · 晴',tags:['🌿 後樂園','🏯 岡山城','✈ 返台'],
+note:'⚠️ 班機 12:20，建議 09:20 前抵達關西機場',
+events:[
+{t:'AM 07:00',n:'早餐·出發岡山',d:'泉佐野出發，搭南海空港線→新幹線至岡山（約1.5小時），寄放行李輕裝遊覽。',bds:['bd-move|🚄 新幹線'],star:false,veg:''},
+{t:'AM 09:00',n:'後樂園',d:'日本三名園之一，江戶時代迴遊式庭園，冬日梅花初綻，白鶴漫步草坪。入場費 ¥410。',bds:['bd-nature|🌿 庭園','bd-nature|🌸 梅花'],star:true,veg:''},
+{t:'AM 10:30',n:'岡山城（烏城）',d:'黑色外牆天守閣，別名「烏城」，與後樂園隔旭川相望，氣質沉穩。',bds:['bd-temple|🏯 古蹟'],star:true,veg:''},
+{t:'PM 11:30',n:'岡山站·伴手禮＋午餐',d:'吉備糰子、白桃果凍、岡山散壽司在車站一次購齊。時間充裕可坐下吃「祭り寿司」。',bds:['bd-food|🍣 散壽司','bd-shop|🎁 伴手禮'],star:false,veg:'🥬 鍋邊素：岡山站二樓「さかいや」有精進お弁当（無魚無肉），吉備糰子（黍餅）本身即為純素點心。'},
+{t:'PM 13:30—',n:'✈ 返回關西機場·回台',d:'岡山→新大阪（新幹線17分）→關西機場（Haruka 特急50分）。12:20起飛，09:20前抵機場。',bds:['bd-move|✈ 返台'],star:true,veg:''},
+],
+tips:['班機12:20 → 建議 09:20 前到機場 → 即最晚08:30離開泉佐野','岡山行程建議最多3小時（09:00–12:00），保留返程緩衝','機場 Haruka 特急需提前預訂座位（JR Pass 持有者免費）']}
 ];
 
-const PACK = {
-  '證件 & 金融':[
-    '護照（確認效期>6個月）','日圓現金（建議 ¥50,000）',
-    'JR Pass 關西廣域版（7日）','信用卡（海外手續費低）','旅遊保險','國際駕照（租車用）'
-  ],
-  '衣物 & 配件':[
-    '保暖外套（5–10°C）','毛帽 & 圍巾','防水登山鞋','替換衣物 x7',
-    '輕便雨傘或雨衣','手套','壓縮袋'
-  ],
-  '電子 & 充電':[
-    '手機 & 充電線','行動電源','日本 Wi-Fi 分享器（預購）','相機 & 記憶卡',
-    '萬用轉接頭（日本A型插座）'
-  ],
-  '健康 & 藥妝':[
-    '感冒藥 & 退燒藥','暈車藥','腸胃藥','OK蹦 & 藥用貼布',
-    '保暖貼（懷爐）','面膜 & 保濕用品'
-  ],
-  '旅行必備':[
-    '行程確認表（本App截圖）','飯店確認信',
-    '伴手禮清單','折疊購物袋 x2','行李秤','頸枕（飛機用）'
-  ]
+const PACK={
+'證件 & 金融':['護照（效期>6個月）','日圓現金（建議 ¥50,000）','JR Pass 關西廣域版','信用卡','旅遊保險','國際駕照（若需）'],
+'衣物 & 配件':['保暖外套（5–10°C）','毛帽 & 圍巾','防水防滑鞋','替換衣物 x7','輕便雨傘','手套','壓縮袋'],
+'電子 & 充電':['手機 & 充電線','行動電源（20000mAh）','Wi-Fi 分享器（預購）','相機 & 記憶卡','轉接頭（日本A型）'],
+'健康 & 藥妝':['感冒藥 & 退燒藥','暈車藥','腸胃藥','OK蹦 & 貼布','保暖貼（懷爐）','保濕面膜'],
+'素食者特備':['素食說明卡（日文）','常備素食零食','植物奶粉/豆漿包','辣椒醬（調味用）'],
+'旅行必備':['行程表（本App截圖）','飯店確認信','伴手禮清單','折疊購物袋 x2','行李秤']
 };
 
-const state = { done: {}, pack: {} };
+const STATE={done:{},pack:{}};
 
-function buildDays() {
-  DAYS.forEach(d => {
-    const el = document.getElementById(d.id);
-    let html = `
-      <div class="day-hdr">
-        <div class="day-num">${d.label}</div>
-        <div class="day-ttl">${d.title}</div>
-        <div class="day-dt">${d.loc}</div>
-        <div class="weather">${d.weather}</div>
-      </div>
-      <div class="progress-wrap">
-        <div class="progress-bar"><div class="progress-fill" id="prog-${d.id}" style="width:0%"></div></div>
-        <div class="progress-txt" id="ptxt-${d.id}">0 / ${d.events.length}</div>
-      </div>
-      <div class="tl">`;
-    d.events.forEach((ev, i) => {
-      const key = `${d.id}-${i}`;
-      const bdHtml = ev.badges.map(b => {
-        const [cls,txt] = b.split('|');
-        return `<span class="bd ${cls}">${txt}</span>`;
-      }).join('');
-      html += `
-        <div class="ev ${ev.star?'star':''}" id="ev-${key}">
-          <div class="ev-card" id="evc-${key}">
-            <div class="ev-time">${ev.time}</div>
-            <div class="ev-name">${ev.name}</div>
-            <div class="ev-desc">${ev.desc}</div>
-            <div class="ev-foot">
-              <div class="badges">${bdHtml}</div>
-              <button class="chk-btn" id="chk-${key}" onclick="toggleEv('${key}','${d.id}')" title="標記完成">
-                <svg viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="1.5,5 4,7.5 8.5,2.5"/>
-                </svg>
-              </button>
-            </div>
+function svgCheck(){return `<svg viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>`;}
+
+function buildDays(){
+  DAYS.forEach(d=>{
+    const el=document.getElementById(d.id);
+    let h=`<div class="day-hdr">
+      <div class="day-num">${d.label}</div>
+      <div class="day-ttl">${d.title}</div>
+      <div class="day-dt">${d.loc}</div>
+      <div class="weather">${d.weather}</div>
+    </div>`;
+    if(d.note){h+=`<div class="info-box" style="margin-top:0;margin-bottom:12px;font-size:11px">${d.note.includes('⚠️')?'<b style="color:var(--red)">'+d.note+'</b>':d.note}</div>`;}
+    h+=`<div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" id="pf-${d.id}" style="width:0%"></div></div><div class="prog-txt" id="pt-${d.id}">0 / ${d.events.length}</div></div>`;
+    h+=`<div class="info-box" style="font-size:11px;margin:0 0 14px">🚃 <b>交通：</b>${d.move}</div>`;
+    h+=`<div class="tl">`;
+    d.events.forEach((ev,i)=>{
+      const k=`${d.id}-${i}`;
+      const bds=ev.bds.map(b=>{const[c,t]=b.split('|');return`<span class="bd ${c}">${t}</span>`;}).join('');
+      h+=`<div class="ev${ev.star?' star':''}${ev.veg?' vev':''}" id="ev-${k}">
+        <div class="ev-card${ev.veg?' veg-card':''}" id="evc-${k}">
+          <div class="ev-time">${ev.t}</div>
+          <div class="ev-name">${ev.n}</div>
+          <div class="ev-desc">${ev.d}</div>
+          ${ev.veg?`<div class="ev-veg">${ev.veg}</div>`:''}
+          <div class="ev-foot">
+            <div class="badges">${bds}</div>
+            <button class="chk-btn" id="chk-${k}" onclick="toggleEv('${k}','${d.id}')">${svgCheck()}</button>
           </div>
-        </div>`;
+        </div></div>`;
     });
-    html += `</div>
-      <div class="tips"><h4>📌 Day Tips</h4><ul class="tips ul">`;
-    d.tips.forEach(t => html += `<li>${t}</li>`);
-    html += `</ul></div>
-      <span class="back" onclick="go('overview',document.querySelectorAll('.tab')[0])">← 返回總覽</span>`;
-    el.innerHTML = html;
+    h+=`</div><div class="tips"><h4>📌 Tips</h4><ul>`;
+    d.tips.forEach(t=>{h+=`<li>${t}</li>`;});
+    h+=`</ul></div><span class="back" onclick="go('overview',0)">← 返回總覽</span>`;
+    el.innerHTML=h;
   });
 }
 
-function buildPack() {
-  const el = document.getElementById('pack-container');
-  let html = '';
-  Object.entries(PACK).forEach(([cat, items]) => {
-    html += `<div class="sec-ttl">${cat}</div><div class="pack-grid">`;
-    items.forEach((item, i) => {
-      const key = `pack-${cat}-${i}`;
-      html += `<div class="pack-item" id="pi-${key}" onclick="togglePack('${key}')">
-        <div class="pack-dot" id="pd-${key}">
-          <svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none" id="ps-${key}">
-            <polyline points="1.5,5 4,7.5 8.5,2.5"/>
-          </svg>
-        </div>
-        <span>${item}</span>
-      </div>`;
+function buildPack(){
+  const el=document.getElementById('pack-container');
+  let h='';
+  const allItems=[];
+  Object.entries(PACK).forEach(([cat,items])=>{
+    h+=`<div class="sec-ttl">${cat}</div><div class="pack-grid">`;
+    items.forEach((item,i)=>{
+      const k=`pk-${cat}-${i}`;
+      allItems.push(k);
+      h+=`<div class="pack-item" id="pi-${k}" onclick="togglePack('${k}')">
+        <div class="pack-dot" id="pd-${k}">${svgCheck()}</div>
+        <span>${item}</span></div>`;
     });
-    html += '</div>';
+    h+=`</div>`;
   });
-  el.innerHTML = html;
+  el.innerHTML=h;
+  document.querySelectorAll('.pack-dot svg').forEach(s=>s.style.display='none');
+  document.getElementById('pack-txt').textContent=`0 / ${allItems.length}`;
 }
 
-function buildOverview() {
-  const grid = document.getElementById('ov-grid');
-  grid.innerHTML = DAYS.map(d => `
-    <div class="ov-card" onclick="go('${d.id}',document.querySelectorAll('.tab')[${DAYS.indexOf(d)+1}])">
+function buildOv(){
+  const g=document.getElementById('ov-grid');
+  g.innerHTML=DAYS.map((d,i)=>`
+    <div class="ov-card" onclick="go('${d.id}',${i+1})">
       <div class="ov-dl">${d.label}</div>
       <div class="ov-dn">${d.title}</div>
       <div class="ov-dd">${d.loc}</div>
-      <div class="ov-tags">${d.tags.map(t=>`<span class="ov-tag">${t}</span>`).join('')}</div>
-    </div>
-  `).join('');
+      <div class="ov-tags">${d.tags.map(t=>`<span class="ov-tag${t.includes('🥬')||t.includes('素')?'':''}">${t}</span>`).join('')}</div>
+    </div>`).join('');
 }
 
-function toggleEv(key, dayId) {
-  state.done[key] = !state.done[key];
-  const btn = document.getElementById('chk-'+key);
-  const card = document.getElementById('evc-'+key);
-  if(state.done[key]) { btn.classList.add('done'); card.classList.add('done-card'); }
-  else { btn.classList.remove('done'); card.classList.remove('done-card'); }
-  updateProgress(dayId);
-  updateGlobal();
+function toggleEv(k,dayId){
+  STATE.done[k]=!STATE.done[k];
+  const btn=document.getElementById('chk-'+k);
+  const card=document.getElementById('evc-'+k);
+  btn.classList.toggle('done',STATE.done[k]);
+  card.classList.toggle('done-card',STATE.done[k]);
+  updProg(dayId);updGlobal();
 }
 
-function updateProgress(dayId) {
-  const d = DAYS.find(x=>x.id===dayId);
-  if(!d) return;
-  const total = d.events.length;
-  const done = d.events.filter((ev,i)=>state.done[`${dayId}-${i}`]).length;
-  const pct = total ? Math.round(done/total*100) : 0;
-  const fill = document.getElementById('prog-'+dayId);
-  const txt = document.getElementById('ptxt-'+dayId);
-  if(fill) fill.style.width = pct+'%';
-  if(txt) txt.textContent = `${done} / ${total}`;
+function updProg(dayId){
+  const d=DAYS.find(x=>x.id===dayId);
+  if(!d)return;
+  const tot=d.events.length;
+  const dn=d.events.filter((_,i)=>STATE.done[`${dayId}-${i}`]).length;
+  const pf=document.getElementById('pf-'+dayId);
+  const pt=document.getElementById('pt-'+dayId);
+  if(pf)pf.style.width=Math.round(dn/tot*100)+'%';
+  if(pt)pt.textContent=`${dn} / ${tot}`;
 }
 
-function updateGlobal() {
-  let total=0, done=0;
-  DAYS.forEach(d => {
-    d.events.forEach((ev,i) => {
-      total++;
-      if(state.done[`${d.id}-${i}`]) done++;
-    });
-  });
-  document.getElementById('done-count').textContent = done;
-  document.getElementById('s-done').textContent = done;
-  document.getElementById('s-total').textContent = total;
+function updGlobal(){
+  let tot=0,dn=0;
+  DAYS.forEach(d=>d.events.forEach((_,i)=>{tot++;if(STATE.done[`${d.id}-${i}`])dn++;}));
+  document.getElementById('done-count').textContent=dn;
+  document.getElementById('s-done').textContent=dn;
+  document.getElementById('s-total').textContent=tot;
 }
 
-function togglePack(key) {
-  state.pack[key] = !state.pack[key];
-  const item = document.getElementById('pi-'+key);
-  const dot = document.getElementById('pd-'+key);
-  const svg = document.getElementById('ps-'+key);
-  if(state.pack[key]) {
-    item.classList.add('checked');
-    dot.style.background='#3d6b3d'; dot.style.borderColor='#3d6b3d';
-    if(svg) svg.style.display='block';
-  } else {
-    item.classList.remove('checked');
-    dot.style.background=''; dot.style.borderColor='';
-    if(svg) svg.style.display='none';
-  }
-  updatePackProgress();
+function togglePack(k){
+  STATE.pack[k]=!STATE.pack[k];
+  const item=document.getElementById('pi-'+k);
+  const dot=document.getElementById('pd-'+k);
+  const svg=dot?dot.querySelector('svg'):null;
+  item.classList.toggle('checked',STATE.pack[k]);
+  if(dot){dot.style.background=STATE.pack[k]?'#3d6b3d':'';dot.style.borderColor=STATE.pack[k]?'#3d6b3d':'';}
+  if(svg)svg.style.display=STATE.pack[k]?'block':'none';
+  updPackProg();
 }
 
-function updatePackProgress() {
-  const all = Object.keys(PACK).reduce((acc,cat)=>acc+PACK[cat].length,0);
-  const done = Object.values(state.pack).filter(Boolean).length;
-  const pct = Math.round(done/all*100);
-  const fill = document.getElementById('pack-fill');
-  const txt = document.getElementById('pack-txt');
-  if(fill) fill.style.width = pct+'%';
-  if(txt) txt.textContent = `${done} / ${all}`;
+function updPackProg(){
+  const all=Object.values(PACK).reduce((a,v)=>a+v.length,0);
+  const dn=Object.values(STATE.pack).filter(Boolean).length;
+  const pct=Math.round(dn/all*100);
+  const f=document.getElementById('pack-fill');
+  const t=document.getElementById('pack-txt');
+  if(f)f.style.width=pct+'%';
+  if(t)t.textContent=`${dn} / ${all}`;
 }
 
-function go(id, tabEl) {
+function go(id,tabIdx){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  const sec = document.getElementById(id);
-  if(sec) sec.classList.add('on');
-  if(tabEl) tabEl.classList.add('on');
-  const tabs = document.getElementById('tabs');
-  if(tabEl && tabs) {
-    const tl = tabEl.offsetLeft, tw = tabEl.offsetWidth, nw = tabs.offsetWidth;
-    tabs.scrollLeft = tl - nw/2 + tw/2;
+  const sec=document.getElementById(id);
+  if(sec)sec.classList.add('on');
+  const tabs=document.querySelectorAll('.tab');
+  if(tabs[tabIdx])tabs[tabIdx].classList.add('on');
+  const tabBar=document.getElementById('tabs');
+  const activeTab=tabs[tabIdx];
+  if(activeTab&&tabBar){
+    tabBar.scrollLeft=activeTab.offsetLeft-tabBar.offsetWidth/2+activeTab.offsetWidth/2;
   }
-  window.scrollTo(0, 0);
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-buildDays();
-buildPack();
-buildOverview();
-updateGlobal();
+buildDays();buildPack();buildOv();updGlobal();
 </script>
