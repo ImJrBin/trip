@@ -2,9 +2,8 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>關西七日遊 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -15,107 +14,188 @@
   --sage:#2e7d32;--sage-light:#e8f5e9;--ink:#1a1209;--paper:#faf7f2;
   --paper2:#f2ece0;--muted:#8a7f72;--border:#e0d8cc;
 }
-html,body{height:100%;font-size:16px}
-body{font-family:'Noto Sans TC',sans-serif;background:#f0ebe0;color:var(--ink);line-height:1.5;max-width:480px;margin:0 auto;display:flex;flex-direction:column}
+html{font-size:16px}
+body{font-family:'Noto Sans TC',sans-serif;background:#f0ebe0;color:var(--ink);line-height:1.5;min-height:100vh}
 
-/* ── SCREENS ── */
-.screen{display:none;flex:1;overflow-y:auto;padding-bottom:80px}
+/* ═══════════ MOBILE BASE ═══════════ */
+.app-wrap{display:flex;flex-direction:column;min-height:100vh;max-width:480px;margin:0 auto}
+.main-col{flex:1}
+.screen{display:none;padding-bottom:80px}
 .screen.on{display:block}
 
-/* ── HERO ── */
+/* bottom nav (mobile only) */
+.bnav{background:#fff;border-top:1px solid var(--border);display:flex;padding:8px 0 max(env(safe-area-inset-bottom,0px),8px);position:sticky;bottom:0;z-index:100}
+.bnav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 0;border:none;background:none}
+.bnav-icon{font-size:22px;line-height:1}
+.bnav-label{font-size:10px;color:var(--muted);font-weight:500}
+.bnav-btn.on .bnav-label{color:var(--red);font-weight:700}
+.bnav-line{width:22px;height:3px;background:var(--red);border-radius:2px;margin-top:3px;display:none}
+.bnav-btn.on .bnav-line{display:block}
+
+/* sidebar (desktop only) */
+.sidebar{display:none}
+
+/* ═══════════ DESKTOP ≥ 768px ═══════════ */
+@media(min-width:768px){
+  body{background:#e8e0d0}
+
+  .app-wrap{
+    flex-direction:row;max-width:100%;min-height:100vh;align-items:stretch
+  }
+
+  /* sidebar */
+  .sidebar{
+    display:flex;flex-direction:column;
+    width:230px;min-width:230px;flex-shrink:0;
+    background:var(--ink);position:sticky;top:0;height:100vh;
+    overflow-y:auto;padding:32px 0 24px
+  }
+  .sb-logo{padding:0 24px 24px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:8px}
+  .sb-title{font-family:'Noto Serif TC',serif;font-size:17px;font-weight:700;color:#f5ede0;letter-spacing:1px;line-height:1.4}
+  .sb-sub{font-size:11px;color:#6a5848;margin-top:4px;letter-spacing:.5px}
+  .sb-btn{display:flex;align-items:center;gap:12px;padding:11px 24px;cursor:pointer;border:none;background:none;width:100%;border-left:3px solid transparent;transition:background .15s}
+  .sb-btn:hover{background:rgba(255,255,255,.06)}
+  .sb-btn.on{background:rgba(192,57,43,.15);border-left-color:var(--red)}
+  .sb-btn .si{font-size:17px}
+  .sb-btn .sl{font-size:14px;color:#9a8878;font-weight:500}
+  .sb-btn.on .sl{color:#f5ede0}
+  .sb-foot{margin-top:auto;padding:16px 24px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#5a4838;line-height:1.8}
+
+  /* main content */
+  .main-col{flex:1;overflow-y:auto;min-width:0}
+  .screen{padding-bottom:48px}
+  .inner{max-width:900px;margin:0 auto}
+
+  /* hide mobile nav */
+  .bnav{display:none}
+
+  /* desktop spacing helpers */
+  .d-px{padding-left:36px;padding-right:36px}
+  .d-mx{margin-left:36px;margin-right:36px}
+
+  /* 2-col grids on desktop */
+  .fc-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .fc-row .flight-card{margin:0}
+
+  .stats-row{grid-template-columns:repeat(4,1fr)}
+
+  .stay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .stay-grid .stay-card{margin:0}
+  .stay-grid .stay-card.full{grid-column:1/-1}
+
+  .ev-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;align-items:start}
+  .ev-grid .ev-card{margin-bottom:14px}
+  .tips-full{grid-column:1/-1}
+
+  .pack-grid{grid-template-columns:repeat(3,1fr)}
+
+  .hero-title{font-size:50px}
+  .sec-hdr{padding-top:28px;padding-bottom:14px}
+  .dh-title{font-size:32px}
+}
+
+@media(min-width:1100px){
+  .sidebar{width:260px;min-width:260px}
+  .inner{max-width:1020px}
+}
+
+/* ═══════════ COMPONENTS ═══════════ */
+
+/* hero */
 .hero{background:#1a1209;padding:36px 20px 28px;text-align:center}
 .hero-flag{font-size:13px;color:#9a8878;letter-spacing:4px;margin-bottom:14px}
 .hero-title{font-family:'Noto Serif TC',serif;font-size:38px;font-weight:700;color:#f5ede0;letter-spacing:2px;line-height:1.2;margin-bottom:6px}
 .hero-sub{font-size:14px;color:#9a8878;letter-spacing:1px;margin-bottom:22px}
 .hero-dates{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:9px 18px;font-size:14px;color:#d0c4b0}
 
-/* ── SECTION HEADER ── */
+/* section header */
 .sec-hdr{display:flex;align-items:center;gap:10px;padding:22px 16px 12px}
-.sec-icon{font-size:22px}
-.sec-ttl{font-family:'Noto Serif TC',serif;font-size:21px;font-weight:700;color:var(--ink)}
+.sec-icon{font-size:21px}
+.sec-ttl{font-family:'Noto Serif TC',serif;font-size:20px;font-weight:700;color:var(--ink)}
 
-/* ── FLIGHT CARD ── */
+/* flight card */
 .flight-card{margin:0 16px 14px;background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden}
 .fc-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border)}
-.fc-dir{font-size:16px;font-weight:700}
+.fc-dir{font-size:15px;font-weight:700}
 .fc-dir.go{color:var(--red)}
 .fc-dir.back{color:#1565c0}
-.fc-airline{font-size:13px;color:var(--muted)}
-.fc-body{padding:16px}
+.fc-airline{font-size:12px;color:var(--muted)}
+.fc-body{padding:14px 16px}
 .fc-times{display:flex;align-items:center}
-.fc-time{font-size:34px;font-weight:700;color:var(--ink);line-height:1}
+.fc-time{font-size:32px;font-weight:700;color:var(--ink);line-height:1}
 .fc-city{font-size:12px;color:var(--muted);margin-top:3px}
-.fc-term{font-size:11px;color:var(--muted);margin-top:2px}
-.fc-mid{flex:1;text-align:center;padding:0 10px}
-.fc-dur{font-size:12px;color:var(--muted);margin-bottom:6px}
+.fc-term{font-size:11px;color:var(--muted);margin-top:1px}
+.fc-mid{flex:1;text-align:center;padding:0 8px}
+.fc-dur{font-size:11px;color:var(--muted);margin-bottom:5px}
 .fc-line{display:flex;align-items:center;gap:4px;justify-content:center}
-.fc-dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0}
+.fc-dot{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
 .fc-dash{flex:1;border-top:1.5px dashed #ccc}
-.fc-tags{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
-.fc-tag{font-size:11px;background:#f5f5f5;color:#555;padding:4px 10px;border-radius:8px;font-weight:500}
+.fc-tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.fc-tag{font-size:11px;background:#f5f5f5;color:#555;padding:3px 9px;border-radius:8px;font-weight:500}
 .fc-tag.hl{background:var(--red-light);color:var(--red)}
 .fc-tag.blue{background:#e3f2fd;color:#1565c0}
 
-/* ── STATS ── */
+/* stats */
 .stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;margin-bottom:4px}
-.stat-c{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center}
-.stat-n{font-family:'Noto Serif TC',serif;font-size:28px;font-weight:700;color:var(--ink);display:block;line-height:1}
-.stat-l{font-size:12px;color:var(--muted);margin-top:5px;display:block}
+.stat-c{background:#fff;border:1px solid var(--border);border-radius:14px;padding:13px;text-align:center}
+.stat-n{font-family:'Noto Serif TC',serif;font-size:26px;font-weight:700;color:var(--ink);display:block;line-height:1}
+.stat-l{font-size:11px;color:var(--muted);margin-top:4px;display:block}
 
-/* ── HOME STAY SUMMARY ── */
+/* stay summary (home) */
 .stay-summary{margin:0 16px 14px;background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden}
-.ss-row{padding:13px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.ss-row{padding:12px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .ss-row+.ss-row{border-top:1px solid var(--border)}
 .ss-dark{background:#1a1209}
-.ss-label{font-size:14px;font-weight:700;color:#f5ede0;flex-shrink:0}
+.ss-dark .ss-label{color:#f5ede0}
 .ss-dark .ss-info{color:#9a8878;font-size:13px;line-height:1.7;text-align:right}
 .ss-light .ss-label{color:var(--ink)}
 .ss-light .ss-info{font-size:13px;color:var(--muted);line-height:1.7;text-align:right}
+.ss-label{font-size:14px;font-weight:700;flex-shrink:0}
 .ss-warn{font-size:12px;color:var(--red)}
 
-/* ── DAY NAV ── */
+/* day nav */
 .day-nav-wrap{padding:4px 16px 10px;overflow-x:auto;scrollbar-width:none}
 .day-nav-wrap::-webkit-scrollbar{display:none}
 .day-nav{display:flex;gap:8px;width:max-content}
-.day-btn{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:9px 14px;font-size:13px;font-family:'Noto Sans TC',sans-serif;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .18s;min-width:72px;text-align:center}
-.day-btn .db-sub{font-size:11px;display:block;margin-bottom:2px}
-.day-btn .db-name{font-size:13px;font-weight:500;display:block}
+.day-btn{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:8px 13px;font-size:13px;font-family:'Noto Sans TC',sans-serif;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .18s;min-width:68px;text-align:center}
+.day-btn .db-s{font-size:11px;display:block;margin-bottom:1px}
+.day-btn .db-n{font-size:13px;font-weight:500;display:block}
 .day-btn.on{background:var(--ink);border-color:var(--ink);color:#f5ede0}
 
-/* ── DAY DETAIL ── */
+/* day detail */
 .day-detail{display:none}
 .day-detail.on{display:block}
 .day-hero{background:var(--ink);padding:20px 16px 18px;margin-bottom:14px}
 .dh-num{font-size:11px;letter-spacing:3px;color:var(--red);font-weight:600;margin-bottom:4px}
-.dh-title{font-family:'Noto Serif TC',serif;font-size:28px;font-weight:700;color:#f5ede0;margin-bottom:4px}
+.dh-title{font-family:'Noto Serif TC',serif;font-size:27px;font-weight:700;color:#f5ede0;margin-bottom:4px}
 .dh-loc{font-size:13px;color:#9a8878}
-.dh-meta{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
-.dh-chip{font-size:11px;background:rgba(255,255,255,.1);color:#c8b8a0;border-radius:20px;padding:4px 12px;border:1px solid rgba(255,255,255,.12)}
+.dh-meta{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.dh-chip{font-size:11px;background:rgba(255,255,255,.1);color:#c8b8a0;border-radius:20px;padding:4px 11px;border:1px solid rgba(255,255,255,.12)}
 .dh-chip.red{background:rgba(192,57,43,.22);color:#f1a09a;border-color:rgba(192,57,43,.3)}
 .dh-chip.green{background:rgba(46,125,50,.22);color:#81c784;border-color:rgba(46,125,50,.3)}
 
-/* ── PROGRESS ── */
-.prog-wrap{margin:0 16px 14px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:13px 15px}
+/* progress */
+.prog-wrap{margin:0 16px 14px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px 14px}
 .pw-top{display:flex;justify-content:space-between;margin-bottom:8px}
 .pw-label{font-size:14px;font-weight:700}
 .pw-count{font-size:14px;color:var(--muted)}
-.pw-track{background:#f0ece4;border-radius:8px;height:9px;overflow:hidden}
+.pw-track{background:#f0ece4;border-radius:8px;height:8px;overflow:hidden}
 .pw-fill{height:100%;background:var(--red);border-radius:8px;transition:width .4s ease}
 
-/* ── TRANSPORT ── */
-.transport{margin:0 16px 12px;background:var(--gold-light);border:1px solid #e8d08a;border-radius:12px;padding:11px 14px;font-size:13px;color:#5a4000;display:flex;gap:10px;align-items:flex-start;line-height:1.7}
+/* transport */
+.transport{margin:0 16px 12px;background:var(--gold-light);border:1px solid #e8d08a;border-radius:12px;padding:10px 14px;font-size:13px;color:#5a4000;display:flex;gap:10px;align-items:flex-start;line-height:1.7}
 
-/* ── EVENT CARDS ── */
+/* event cards */
 .ev-list{padding:0 16px}
-.ev-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:15px 14px 13px;margin-bottom:12px;position:relative}
+.ev-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px 13px 12px;margin-bottom:12px;position:relative}
 .ev-card.veg-card{border-left:4px solid #66bb6a}
 .ev-card.done-card{opacity:.42}
-.ev-time{font-size:11px;color:var(--muted);letter-spacing:1.5px;margin-bottom:5px;font-weight:500}
-.ev-name{font-family:'Noto Serif TC',serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:6px;padding-right:38px;line-height:1.3}
-.ev-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:9px}
-.ev-veg{font-size:12px;color:var(--sage);background:var(--sage-light);border-radius:10px;padding:8px 11px;margin-bottom:9px;line-height:1.7}
+.ev-time{font-size:11px;color:var(--muted);letter-spacing:1.5px;margin-bottom:4px;font-weight:500}
+.ev-name{font-family:'Noto Serif TC',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:5px;padding-right:36px;line-height:1.3}
+.ev-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:8px}
+.ev-veg{font-size:12px;color:var(--sage);background:var(--sage-light);border-radius:9px;padding:7px 10px;margin-bottom:8px;line-height:1.7}
 .ev-foot{display:flex;gap:5px;flex-wrap:wrap}
-.bd{font-size:11px;padding:4px 10px;border-radius:8px;font-weight:500}
+.bd{font-size:11px;padding:3px 9px;border-radius:7px;font-weight:500}
 .bd-food{background:#fff8e1;color:#7a4f0a}
 .bd-temple{background:#fce4ec;color:#880e4f}
 .bd-nature{background:#e8f5e9;color:#1b5e20}
@@ -123,400 +203,283 @@ body{font-family:'Noto Sans TC',sans-serif;background:#f0ebe0;color:var(--ink);l
 .bd-onsen{background:#e3f2fd;color:#0d47a1}
 .bd-move{background:#f5f5f5;color:#444}
 .bd-hotel{background:#f3e5f5;color:#4a148c}
-.chk-btn{position:absolute;top:14px;right:12px;width:32px;height:32px;border-radius:50%;border:2px solid var(--border);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.chk-btn{position:absolute;top:13px;right:11px;width:30px;height:30px;border-radius:50%;border:2px solid var(--border);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .chk-btn.done{background:var(--sage);border-color:var(--sage)}
-.chk-btn svg{width:14px;height:14px;display:none}
+.chk-btn svg{width:13px;height:13px;display:none}
 .chk-btn.done svg{display:block}
 
-/* ── TIPS ── */
-.tips-box{margin:0 16px 20px;background:var(--ink);border-radius:16px;padding:15px 16px}
-.tips-ttl{font-size:14px;font-weight:700;color:#f5ede0;margin-bottom:10px}
-.tips-item{display:flex;gap:9px;margin-bottom:7px;align-items:flex-start}
-.tips-dot{width:20px;height:20px;background:rgba(192,57,43,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.tips-dot::after{content:'';width:7px;height:7px;border-radius:50%;background:var(--red)}
+/* tips */
+.tips-box{margin:0 16px 20px;background:var(--ink);border-radius:16px;padding:14px 16px}
+.tips-ttl{font-size:14px;font-weight:700;color:#f5ede0;margin-bottom:9px}
+.tips-item{display:flex;gap:9px;margin-bottom:6px;align-items:flex-start}
+.tips-dot{width:18px;height:18px;background:rgba(192,57,43,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.tips-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--red)}
 .tips-txt{font-size:13px;color:#a09080;line-height:1.7}
 
-/* ── OVERVIEW (行程頁首列) ── */
-.ov-list{padding:0 16px}
-.ov-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:10px;cursor:pointer;display:flex;align-items:center;gap:14px;transition:all .18s}
-.ov-card:active{background:var(--paper2)}
-.ov-left{width:54px;height:54px;background:var(--ink);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
-.ov-day-n{font-size:20px;font-weight:700;color:#f5ede0;font-family:'Noto Serif TC',serif;line-height:1}
-.ov-day-l{font-size:9px;color:#9a8878;letter-spacing:1px;margin-top:2px}
-.ov-right{flex:1;min-width:0}
-.ov-title{font-family:'Noto Serif TC',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:2px}
-.ov-loc{font-size:12px;color:var(--muted);margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ov-tags{display:flex;gap:4px;flex-wrap:wrap}
-.ov-tag{font-size:10px;background:var(--paper2);color:var(--muted);border:1px solid var(--border);padding:2px 8px;border-radius:20px}
-.ov-tag.vt{background:var(--sage-light);color:var(--sage);border-color:#a5d6a7}
-.ov-arr{font-size:20px;color:#ccc;flex-shrink:0}
-
-/* ── STAY ── */
+/* stay (住宿頁) */
 .stay-card{margin:0 16px 14px;background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden}
-.stay-head{padding:14px 16px}
+.stay-head{padding:13px 16px}
 .stay-head.dark{background:var(--ink)}
 .stay-head.warn{background:#7a1a1a}
-.stay-num{font-size:11px;letter-spacing:3px;color:var(--red);font-weight:600;margin-bottom:4px}
+.stay-num{font-size:10px;letter-spacing:3px;color:var(--red);font-weight:600;margin-bottom:3px}
 .stay-head.dark .stay-num,.stay-head.warn .stay-num{color:#f1a09a}
-.stay-title{font-family:'Noto Serif TC',serif;font-size:20px;font-weight:700;color:var(--ink)}
+.stay-title{font-family:'Noto Serif TC',serif;font-size:19px;font-weight:700}
 .stay-head.dark .stay-title,.stay-head.warn .stay-title{color:#f5ede0}
-.stay-dates{font-size:12px;color:var(--muted);margin-top:2px}
+.stay-head:not(.dark):not(.warn) .stay-title{color:var(--ink)}
+.stay-dates{font-size:12px;margin-top:2px}
 .stay-head.dark .stay-dates,.stay-head.warn .stay-dates{color:#9a8878}
-.stay-body{padding:14px 16px}
-.stay-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.sb{font-size:11px;padding:4px 10px;border-radius:8px;font-weight:500}
+.stay-head:not(.dark):not(.warn) .stay-dates{color:var(--muted)}
+.stay-body{padding:13px 16px}
+.stay-row{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:11px}
+.sb{font-size:11px;padding:3px 9px;border-radius:7px;font-weight:500}
 .sb-must{background:#fff3e0;color:#7a4500}
 .sb-nice{background:var(--sage-light);color:var(--sage)}
-.stay-zone{font-size:13px;color:var(--ink);line-height:1.9;margin-bottom:12px}
-.stay-zone b{color:var(--ink)}
-.stay-warn-box{font-size:12px;color:var(--red);background:var(--red-light);border-radius:10px;padding:9px 12px;margin-bottom:12px;line-height:1.7}
-.stay-link{display:block;text-align:center;background:var(--ink);color:#f5ede0;border-radius:12px;padding:12px;font-size:14px;font-weight:700;text-decoration:none;letter-spacing:1px}
+.stay-zone{font-size:13px;color:var(--ink);line-height:1.9;margin-bottom:11px}
+.stay-warn-box{font-size:12px;color:var(--red);background:var(--red-light);border-radius:9px;padding:8px 12px;margin-bottom:11px;line-height:1.7}
+.stay-link{display:block;text-align:center;background:var(--ink);color:#f5ede0;border-radius:11px;padding:11px;font-size:14px;font-weight:700;text-decoration:none;letter-spacing:1px}
+.stay-link:hover{background:#2d1f0e}
 
-/* ── PACK ── */
-.pack-prog{margin:0 16px 16px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:15px}
+/* pack */
+.pack-prog{margin:0 16px 16px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px}
 .pack-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 16px;margin-bottom:6px}
-.pack-item{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:11px 10px;display:flex;align-items:flex-start;gap:8px;cursor:pointer;transition:all .18s;user-select:none}
-.pack-item:active{background:var(--paper2)}
+.pack-item{background:#fff;border:1.5px solid var(--border);border-radius:11px;padding:10px;display:flex;align-items:flex-start;gap:8px;cursor:pointer;user-select:none;transition:border-color .15s}
+.pack-item:hover{border-color:#a09080}
 .pack-item.checked{opacity:.38}
 .pack-item.checked .pack-label{text-decoration:line-through}
-.pack-dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .2s}
+.pack-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .2s}
 .pack-item.checked .pack-dot{background:var(--sage);border-color:var(--sage)}
 .pack-label{font-size:12px;color:var(--ink);line-height:1.5}
-
-/* ── BOTTOM NAV ── */
-.bnav{background:#fff;border-top:1px solid var(--border);display:flex;position:sticky;bottom:0;padding:8px 0 max(env(safe-area-inset-bottom,0px),8px);z-index:100}
-.bnav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 0;border:none;background:none}
-.bnav-icon{font-size:24px;line-height:1}
-.bnav-label{font-size:10px;color:var(--muted);letter-spacing:.5px;font-family:'Noto Sans TC',sans-serif;font-weight:500}
-.bnav-btn.on .bnav-label{color:var(--red);font-weight:700}
-.bnav-line{width:22px;height:3px;background:var(--red);border-radius:2px;margin-top:3px;display:none}
-.bnav-btn.on .bnav-line{display:block}
 </style>
 </head>
 <body>
+<div class="app-wrap">
 
-<!-- ══ SCREEN: HOME ══ -->
-<div id="s-home" class="screen on">
-  <div class="hero">
-    <div class="hero-flag">🇯🇵 &nbsp;關西 KANSAI</div>
-    <div class="hero-title">2027 關西七日遊</div>
-    <div class="hero-sub">5人悠閒深度行 · 🥬 鍋邊素友善</div>
-    <div class="hero-dates">📅 &nbsp;2027/02/01（一）— 2027/02/07（日）</div>
-  </div>
-
-  <div class="sec-hdr"><span class="sec-icon">✈️</span><span class="sec-ttl">航班動態</span></div>
-
-  <div class="flight-card">
-    <div class="fc-head">
-      <span class="fc-dir go">去程</span>
-      <span class="fc-airline">請自行確認航班</span>
+  <!-- ── SIDEBAR (desktop) ── -->
+  <nav class="sidebar">
+    <div class="sb-logo">
+      <div class="sb-title">關西七日遊<br>2027</div>
+      <div class="sb-sub">2/1 — 2/7 · 5人同行</div>
     </div>
-    <div class="fc-body">
-      <div class="fc-times">
-        <div>
-          <div class="fc-time">07:30</div>
-          <div class="fc-city">桃園國際機場 (TPE)</div>
-          <div class="fc-term">T2</div>
+    <div style="flex:1">
+      <button class="sb-btn on" onclick="goScreen('home',0)"><span class="si">🏠</span><span class="sl">首頁</span></button>
+      <button class="sb-btn" onclick="goScreen('itin',1)"><span class="si">📋</span><span class="sl">每日行程</span></button>
+      <button class="sb-btn" onclick="goScreen('stay',2)"><span class="si">🛏</span><span class="sl">住宿指南</span></button>
+      <button class="sb-btn" onclick="goScreen('pack',3)"><span class="si">🧳</span><span class="sl">行前清單</span></button>
+    </div>
+    <div class="sb-foot">🥬 鍋邊素友善<br>♨ 溫泉 · 🌸 梅花季<br>✈ 關西機場進出</div>
+  </nav>
+
+  <!-- ── MAIN ── -->
+  <div class="main-col">
+
+    <!-- HOME -->
+    <div id="s-home" class="screen on">
+      <div class="inner">
+        <div class="hero">
+          <div class="hero-flag">🇯🇵 &nbsp;關西 KANSAI</div>
+          <div class="hero-title">2027 關西七日遊</div>
+          <div class="hero-sub">5人悠閒深度行 · 🥬 鍋邊素友善</div>
+          <div class="hero-dates">📅 &nbsp;2027/02/01（一）— 2027/02/07（日）</div>
         </div>
-        <div class="fc-mid">
-          <div class="fc-dur">約 2h 45m</div>
-          <div class="fc-line">
-            <div class="fc-dot"></div>
-            <div class="fc-dash"></div>
-            <div class="fc-dot" style="background:#1565c0"></div>
+
+        <div class="sec-hdr d-px"><span class="sec-icon">✈️</span><span class="sec-ttl">航班動態</span></div>
+        <div class="fc-row d-mx">
+          <div class="flight-card">
+            <div class="fc-head"><span class="fc-dir go">去程</span><span class="fc-airline">請自行確認航班</span></div>
+            <div class="fc-body">
+              <div class="fc-times">
+                <div><div class="fc-time">07:30</div><div class="fc-city">桃園國際機場 (TPE)</div><div class="fc-term">T2</div></div>
+                <div class="fc-mid"><div class="fc-dur">約 2h 45m</div><div class="fc-line"><div class="fc-dot"></div><div class="fc-dash"></div><div class="fc-dot" style="background:#1565c0"></div></div></div>
+                <div style="text-align:right"><div class="fc-time">10:15</div><div class="fc-city">關西國際機場 (KIX)</div><div class="fc-term">T1</div></div>
+              </div>
+              <div class="fc-tags"><span class="fc-tag">2027/02/01</span><span class="fc-tag blue">抵達後換取 JR Pass</span></div>
+            </div>
+          </div>
+          <div class="flight-card">
+            <div class="fc-head"><span class="fc-dir back">回程</span><span class="fc-airline">請自行確認航班</span></div>
+            <div class="fc-body">
+              <div class="fc-times">
+                <div><div class="fc-time">12:20</div><div class="fc-city">關西國際機場 (KIX)</div><div class="fc-term">T1</div></div>
+                <div class="fc-mid"><div class="fc-dur">約 2h 45m</div><div class="fc-line"><div class="fc-dot" style="background:#1565c0"></div><div class="fc-dash"></div><div class="fc-dot" style="background:#1565c0"></div></div></div>
+                <div style="text-align:right"><div class="fc-time">14:05</div><div class="fc-city">桃園國際機場 (TPE)</div><div class="fc-term">T2</div></div>
+              </div>
+              <div class="fc-tags"><span class="fc-tag">2027/02/07</span><span class="fc-tag hl">⚠️ 09:20 前需到機場</span></div>
+            </div>
           </div>
         </div>
-        <div style="text-align:right">
-          <div class="fc-time">10:15</div>
-          <div class="fc-city">關西國際機場 (KIX)</div>
-          <div class="fc-term">T1</div>
-        </div>
-      </div>
-      <div class="fc-tags">
-        <span class="fc-tag">2027/02/01</span>
-        <span class="fc-tag blue">抵達後換取 JR Pass</span>
-      </div>
-    </div>
-  </div>
 
-  <div class="flight-card">
-    <div class="fc-head">
-      <span class="fc-dir back">回程</span>
-      <span class="fc-airline">請自行確認航班</span>
-    </div>
-    <div class="fc-body">
-      <div class="fc-times">
-        <div>
-          <div class="fc-time">12:20</div>
-          <div class="fc-city">關西國際機場 (KIX)</div>
-          <div class="fc-term">T1</div>
+        <div class="sec-hdr d-px"><span class="sec-icon">📊</span><span class="sec-ttl">行程概覽</span></div>
+        <div class="stats-row d-px" style="margin-bottom:4px">
+          <div class="stat-c"><span class="stat-n">7</span><span class="stat-l">旅遊天數</span></div>
+          <div class="stat-c"><span class="stat-n">5</span><span class="stat-l">造訪城市</span></div>
+          <div class="stat-c"><span class="stat-n" id="h-done">0</span><span class="stat-l">已打卡景點</span></div>
+          <div class="stat-c"><span class="stat-n">梅花季</span><span class="stat-l">2月當季</span></div>
         </div>
-        <div class="fc-mid">
-          <div class="fc-dur">約 2h 45m</div>
-          <div class="fc-line">
-            <div class="fc-dot" style="background:#1565c0"></div>
-            <div class="fc-dash"></div>
-            <div class="fc-dot" style="background:#1565c0"></div>
+
+        <div class="sec-hdr d-px"><span class="sec-icon">🏠</span><span class="sec-ttl">住宿計畫</span></div>
+        <div class="stay-summary d-mx">
+          <div class="ss-row ss-dark"><span class="ss-label">前 4 晚</span><span class="ss-info">2/1–2/4 · 大阪市中心 Airbnb<br>5人 · 3床 · 難波/天王寺/梅田</span></div>
+          <div class="ss-row ss-light"><span class="ss-label">後 2 晚</span><span class="ss-info">2/5–2/6 · 京都市內 Airbnb<br>5人 · 3床 · 近JR站</span></div>
+          <div class="ss-row ss-light"><span class="ss-label" style="color:var(--red)">最後一晚</span><span class="ss-info"><span class="ss-warn">⚠️ 2/6 晚轉往</span><br>關西機場周邊（泉佐野）</span></div>
+          <div style="padding:10px 16px;text-align:center;font-size:13px;color:var(--muted)">詳細搜尋條件請見「住宿」分頁</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITINERARY -->
+    <div id="s-itin" class="screen">
+      <div class="inner">
+        <div class="sec-hdr d-px"><span class="sec-icon">🗓</span><span class="sec-ttl">每日行程</span></div>
+        <div class="day-nav-wrap d-px" style="padding-left:36px;padding-right:36px"><div class="day-nav" id="day-nav"></div></div>
+        <div id="day-panels"></div>
+      </div>
+    </div>
+
+    <!-- STAY -->
+    <div id="s-stay" class="screen">
+      <div class="inner">
+        <div class="sec-hdr d-px"><span class="sec-icon">🏠</span><span class="sec-ttl">Airbnb 住宿指南</span></div>
+        <div class="stay-grid d-mx">
+          <div class="stay-card">
+            <div class="stay-head dark"><div class="stay-num">第一住宿</div><div class="stay-title">大阪市中心</div><div class="stay-dates">入住 2/1 · 退房 2/5 早 · 共 4 晚</div></div>
+            <div class="stay-body">
+              <div class="stay-row"><span class="sb sb-must">5人入住</span><span class="sb sb-must">3間臥室</span><span class="sb sb-must">廚房</span><span class="sb sb-must">近JR/地鐵</span><span class="sb sb-must">洗衣機</span><span class="sb sb-nice">自助check-in</span></div>
+              <div class="stay-zone"><b>推薦區域</b><br>· 難波／心齋橋 — 餐廳藥妝最密集<br>· 天王寺 — 至和歌山JR直達<br>· 梅田／大阪站 — 交通最方便<br><br><b>搜尋關鍵字</b><br>Osaka Namba entire apartment<br>5 guests · 3 bedrooms</div>
+              <a class="stay-link" href="https://www.airbnb.com.tw/s/Namba--Osaka/homes?adults=5&min_bedrooms=3" target="_blank">開啟 Airbnb 搜尋 ↗</a>
+            </div>
+          </div>
+          <div class="stay-card">
+            <div class="stay-head dark"><div class="stay-num">第二住宿</div><div class="stay-title">京都市內</div><div class="stay-dates">入住 2/5 · 退房 2/6 晚 · 共 2 晚</div></div>
+            <div class="stay-body">
+              <div class="stay-row"><span class="sb sb-must">5人入住</span><span class="sb sb-must">3間臥室</span><span class="sb sb-must">近JR站</span><span class="sb sb-nice">洗衣機</span><span class="sb sb-nice">廚房</span></div>
+              <div class="stay-zone"><b>推薦區域</b><br>· 京都站周邊 — 進出神戶、大阪方便<br>· 四条／烏丸 — 市區核心，觀光便利<br><br><b>搜尋關鍵字</b><br>Kyoto entire apartment<br>5 guests · 3 bedrooms · station</div>
+              <a class="stay-link" href="https://www.airbnb.com.tw/s/Kyoto/homes?adults=5&min_bedrooms=3" target="_blank">開啟 Airbnb 搜尋 ↗</a>
+            </div>
+          </div>
+          <div class="stay-card full">
+            <div class="stay-head warn"><div class="stay-num">第三住宿（最後一晚）</div><div class="stay-title">關西機場周邊</div><div class="stay-dates">入住 2/6 晚 · 退房 2/7 早 · 共 1 晚</div></div>
+            <div class="stay-body">
+              <div class="stay-warn-box">⚠️ 12:20 飛機 → 09:20 前需到機場 → 最晚 08:30 離開住宿出發</div>
+              <div class="stay-row"><span class="sb sb-must">5人入住</span><span class="sb sb-must">機場30分內</span><span class="sb sb-nice">備案：機場飯店</span></div>
+              <div class="stay-zone"><b>推薦區域</b><br>· 泉佐野市 — 距機場最近住宅區<br>· 臨空城 Rinku Town — 機場對岸單站可達<br>· 備案：ANA Crowne Plaza 關西機場館內飯店<br><br><b>搜尋關鍵字</b><br>Senshu Osaka apartment 5 guests near Kansai Airport</div>
+              <a class="stay-link" href="https://www.airbnb.com.tw/s/Sennan--Osaka/homes?adults=5&min_bedrooms=3" target="_blank">開啟 Airbnb 搜尋 ↗</a>
+            </div>
           </div>
         </div>
-        <div style="text-align:right">
-          <div class="fc-time">14:05</div>
-          <div class="fc-city">桃園國際機場 (TPE)</div>
-          <div class="fc-term">T2</div>
+      </div>
+    </div>
+
+    <!-- PACK -->
+    <div id="s-pack" class="screen">
+      <div class="inner">
+        <div class="sec-hdr d-px"><span class="sec-icon">🧳</span><span class="sec-ttl">行前打包清單</span></div>
+        <div class="pack-prog d-mx">
+          <div style="display:flex;justify-content:space-between;margin-bottom:9px"><span style="font-size:15px;font-weight:700">打包進度</span><span style="font-size:14px;color:var(--muted)" id="pack-txt">0 / 0</span></div>
+          <div style="background:#f0ece4;border-radius:8px;height:10px;overflow:hidden"><div id="pack-fill" style="height:100%;background:var(--sage);border-radius:8px;transition:width .4s;width:0%"></div></div>
         </div>
-      </div>
-      <div class="fc-tags">
-        <span class="fc-tag">2027/02/07</span>
-        <span class="fc-tag hl">⚠️ 09:20 前需到機場</span>
+        <div id="pack-body"></div>
       </div>
     </div>
+
+  </div><!-- /main-col -->
+
+  <!-- BOTTOM NAV (mobile) -->
+  <div class="bnav">
+    <button class="bnav-btn on" onclick="goScreen('home',0)"><span class="bnav-icon">🏠</span><span class="bnav-label">首頁</span><div class="bnav-line"></div></button>
+    <button class="bnav-btn" onclick="goScreen('itin',1)"><span class="bnav-icon">📋</span><span class="bnav-label">行程</span><div class="bnav-line"></div></button>
+    <button class="bnav-btn" onclick="goScreen('stay',2)"><span class="bnav-icon">🛏</span><span class="bnav-label">住宿</span><div class="bnav-line"></div></button>
+    <button class="bnav-btn" onclick="goScreen('pack',3)"><span class="bnav-icon">🧳</span><span class="bnav-label">清單</span><div class="bnav-line"></div></button>
   </div>
 
-  <div class="sec-hdr"><span class="sec-icon">📊</span><span class="sec-ttl">行程概覽</span></div>
-  <div class="stats-row">
-    <div class="stat-c"><span class="stat-n">7</span><span class="stat-l">旅遊天數</span></div>
-    <div class="stat-c"><span class="stat-n">5</span><span class="stat-l">造訪城市</span></div>
-    <div class="stat-c"><span class="stat-n" id="h-done">0</span><span class="stat-l">已打卡景點</span></div>
-    <div class="stat-c"><span class="stat-n">梅花季</span><span class="stat-l">2月當季</span></div>
-  </div>
-
-  <div class="sec-hdr"><span class="sec-icon">🏠</span><span class="sec-ttl">住宿計畫</span></div>
-  <div class="stay-summary">
-    <div class="ss-row ss-dark">
-      <span class="ss-label">前 4 晚</span>
-      <span class="ss-info">2/1–2/4<br>大阪市中心 Airbnb<br>5人 · 3床</span>
-    </div>
-    <div class="ss-row ss-light">
-      <span class="ss-label">後 2 晚</span>
-      <span class="ss-info">2/5–2/6<br>京都市內 Airbnb<br>5人 · 3床</span>
-    </div>
-    <div class="ss-row ss-light" style="border-top:1px solid var(--border)">
-      <span class="ss-label" style="color:var(--red)">最後一晚</span>
-      <span class="ss-info"><span class="ss-warn">⚠️ 2/6 晚轉往</span><br>關西機場周邊（泉佐野）<br>確保 2/7 早班機</span>
-    </div>
-    <div style="padding:12px 16px;text-align:center;font-size:13px;color:var(--muted)">
-      詳細搜尋條件請見「住宿」分頁
-    </div>
-  </div>
-</div>
-
-<!-- ══ SCREEN: ITINERARY ══ -->
-<div id="s-itin" class="screen">
-  <div class="sec-hdr"><span class="sec-icon">🗓</span><span class="sec-ttl">每日行程</span></div>
-  <div class="day-nav-wrap">
-    <div class="day-nav" id="day-nav"></div>
-  </div>
-  <div id="day-panels"></div>
-</div>
-
-<!-- ══ SCREEN: STAY ══ -->
-<div id="s-stay" class="screen">
-  <div class="sec-hdr"><span class="sec-icon">🏠</span><span class="sec-ttl">Airbnb 住宿指南</span></div>
-
-  <div class="stay-card">
-    <div class="stay-head dark">
-      <div class="stay-num">第一住宿</div>
-      <div class="stay-title">大阪市中心</div>
-      <div class="stay-dates">入住 2/1 · 退房 2/5 早 · 共 4 晚</div>
-    </div>
-    <div class="stay-body">
-      <div class="stay-row">
-        <span class="sb sb-must">5人入住</span><span class="sb sb-must">3間臥室</span>
-        <span class="sb sb-must">廚房</span><span class="sb sb-must">近JR/地鐵</span>
-        <span class="sb sb-must">洗衣機</span><span class="sb sb-nice">自助check-in</span>
-        <span class="sb sb-nice">行李寄放</span>
-      </div>
-      <div class="stay-zone">
-        <b>推薦區域</b><br>
-        · <b>難波／心齋橋</b> — 餐廳藥妝最密集<br>
-        · <b>天王寺</b> — 至和歌山JR直達<br>
-        · <b>梅田／大阪站</b> — 交通最方便<br><br>
-        <b>搜尋關鍵字</b><br>
-        Osaka Namba entire apartment<br>5 guests · 3 bedrooms
-      </div>
-      <a class="stay-link" href="https://www.airbnb.com.tw/s/Namba--Osaka/homes?adults=5&min_bedrooms=3" target="_blank">開啟 Airbnb 搜尋 ↗</a>
-    </div>
-  </div>
-
-  <div class="stay-card">
-    <div class="stay-head dark">
-      <div class="stay-num">第二住宿</div>
-      <div class="stay-title">京都市內</div>
-      <div class="stay-dates">入住 2/5 · 退房 2/6 晚 · 共 2 晚</div>
-    </div>
-    <div class="stay-body">
-      <div class="stay-row">
-        <span class="sb sb-must">5人入住</span><span class="sb sb-must">3間臥室</span>
-        <span class="sb sb-must">近JR站</span><span class="sb sb-nice">洗衣機</span>
-        <span class="sb sb-nice">廚房</span>
-      </div>
-      <div class="stay-zone">
-        <b>推薦區域</b><br>
-        · <b>京都站周邊</b> — 方便進出神戶、大阪<br>
-        · <b>四条／烏丸</b> — 市區核心，觀光便利<br><br>
-        <b>搜尋關鍵字</b><br>
-        Kyoto entire apartment<br>5 guests · 3 bedrooms · station
-      </div>
-      <a class="stay-link" href="https://www.airbnb.com.tw/s/Kyoto/homes?adults=5&min_bedrooms=3" target="_blank">開啟 Airbnb 搜尋 ↗</a>
-    </div>
-  </div>
-
-  <div class="stay-card">
-    <div class="stay-head warn">
-      <div class="stay-num">第三住宿（最後一晚）</div>
-      <div class="stay-title">關西機場周邊</div>
-      <div class="stay-dates">入住 2/6 晚 · 退房 2/7 早 · 共 1 晚</div>
-    </div>
-    <div class="stay-body">
-      <div class="stay-warn-box">⚠️ 12:20 飛機 → 09:20 前需到機場<br>最晚 08:30 離開住宿出發</div>
-      <div class="stay-row">
-        <span class="sb sb-must">5人入住</span><span class="sb sb-must">機場30分內</span>
-        <span class="sb sb-nice">備案：機場飯店</span>
-      </div>
-      <div class="stay-zone">
-        <b>推薦區域</b><br>
-        · <b>泉佐野市</b> — 距機場最近住宅區<br>
-        · <b>臨空城 Rinku Town</b> — 機場對岸單站可達<br>
-        · <b>備案</b>：ANA Crowne Plaza 關西機場館內飯店<br><br>
-        <b>搜尋關鍵字</b><br>
-        Senshu Osaka entire apartment<br>5 guests near Kansai Airport
-      </div>
-      <a class="stay-link" href="https://www.airbnb.com.tw/s/Sennan--Osaka/homes?adults=5&min_bedrooms=3" target="_blank">開啟 Airbnb 搜尋 ↗</a>
-    </div>
-  </div>
-</div>
-
-<!-- ══ SCREEN: PACK ══ -->
-<div id="s-pack" class="screen">
-  <div class="sec-hdr"><span class="sec-icon">🧳</span><span class="sec-ttl">行前打包清單</span></div>
-  <div class="pack-prog">
-    <div style="display:flex;justify-content:space-between;margin-bottom:9px">
-      <span style="font-size:15px;font-weight:700">打包進度</span>
-      <span style="font-size:14px;color:var(--muted)" id="pack-txt">0 / 0</span>
-    </div>
-    <div style="background:#f0ece4;border-radius:8px;height:10px;overflow:hidden">
-      <div id="pack-fill" style="height:100%;background:var(--sage);border-radius:8px;transition:width .4s;width:0%"></div>
-    </div>
-  </div>
-  <div id="pack-body"></div>
-</div>
-
-<!-- ══ BOTTOM NAV ══ -->
-<div class="bnav">
-  <button class="bnav-btn on" onclick="goScreen('home',0)">
-    <span class="bnav-icon">🏠</span>
-    <span class="bnav-label">首頁</span>
-    <div class="bnav-line"></div>
-  </button>
-  <button class="bnav-btn" onclick="goScreen('itin',1)">
-    <span class="bnav-icon">📋</span>
-    <span class="bnav-label">行程</span>
-    <div class="bnav-line"></div>
-  </button>
-  <button class="bnav-btn" onclick="goScreen('stay',2)">
-    <span class="bnav-icon">🛏</span>
-    <span class="bnav-label">住宿</span>
-    <div class="bnav-line"></div>
-  </button>
-  <button class="bnav-btn" onclick="goScreen('pack',3)">
-    <span class="bnav-icon">🧳</span>
-    <span class="bnav-label">清單</span>
-    <div class="bnav-line"></div>
-  </button>
-</div>
+</div><!-- /app-wrap -->
 
 <script>
 const DAYS=[
 {id:0,sub:'2/1',label:'Day 1',title:'抵達·和歌山',loc:'關西機場 → 和歌山 → 大阪',
- weather:'🌤 5–9°C',
- transport:'JR くろしお 特急｜機場→和歌山 約60分｜和歌山→大阪 約60分',
+ weather:'🌤 5–9°C',transport:'JR くろしお 特急｜機場→和歌山 約60分｜和歌山→大阪 約60分',
  chips:[{t:'✈ 抵達',c:''},{t:'♨ 溫泉',c:''},{t:'🌸 梅花',c:''}],
  events:[
-  {t:'AM 入境',n:'關西機場落地',d:'辦理入境、換取 JR Pass 關西廣域版、購買 ICOCA 卡。機場有換匯、7-Eleven 可補充備用品。',bds:['bd-move|✈ 交通'],star:false,veg:''},
-  {t:'PM 14:00',n:'和歌山城',d:'白色天守閣居高眺望市區，城內梅園2月初飄香，悠閒散步約1.5小時。入場費 ¥410。',bds:['bd-temple|🏯 古蹟','bd-nature|🌸 梅花'],star:true,veg:''},
-  {t:'PM 16:30',n:'黑潮市場·晚餐',d:'和歌山港邊海鮮市場，現撈龍蝦、鮪魚、海鮮丼，新鮮度絕佳。',bds:['bd-food|🦞 海鮮','bd-food|🍣 壽司'],star:false,veg:'🥬 蔬菜天婦羅（精進揚げ）、豆腐料理定食可選，告知店員「魚介なし」即可。'},
-  {t:'PM 19:30',n:'入住大阪 Airbnb',d:'搭 JR 阪和線回大阪，Check in 整棟公寓，安頓整理行李。',bds:['bd-move|🚃 電車','bd-hotel|🏠 Airbnb'],star:false,veg:''},
+  {t:'AM 入境',n:'關西機場落地',d:'辦理入境、換取 JR Pass 關西廣域版、購買 ICOCA 卡。機場有換匯、7-Eleven 補充備用品。',bds:['bd-move|✈ 交通'],veg:''},
+  {t:'PM 14:00',n:'和歌山城',d:'白色天守閣居高眺望市區，城內梅園2月初飄香，悠閒散步約1.5小時。入場費 ¥410。',bds:['bd-temple|🏯 古蹟','bd-nature|🌸 梅花'],veg:''},
+  {t:'PM 16:30',n:'黑潮市場·晚餐',d:'和歌山港邊海鮮市場，現撈龍蝦、鮪魚、海鮮丼，新鮮度絕佳。',bds:['bd-food|🦞 海鮮','bd-food|🍣 壽司'],veg:'🥬 蔬菜天婦羅（精進揚げ）、豆腐料理定食可選，告知店員「魚介なし」即可。'},
+  {t:'PM 19:30',n:'入住大阪 Airbnb',d:'搭 JR 阪和線回大阪，Check in 整棟公寓，安頓整理行李。',bds:['bd-move|🚃 電車','bd-hotel|🏠 Airbnb'],veg:''},
  ],
  tips:['大阪 Airbnb 選難波或天王寺，至和歌山 JR 直達','和歌山城日落約17:30，建議16:00前入場','當晚輕鬆安頓，明天才是重頭戲']},
 
 {id:1,sub:'2/2',label:'Day 2',title:'熊野古道',loc:'大阪 → 和歌山縣 → 大阪',
- weather:'🌥 4–8°C',
- transport:'大阪→紀伊勝浦：JR くろしお 約2.5小時（需早出發）',
+ weather:'🌥 4–8°C',transport:'大阪→紀伊勝浦：JR くろしお 約2.5小時（需早出發）',
  chips:[{t:'🏔 健行',c:''},{t:'⛩ 世界遺産',c:''},{t:'🌸 南部梅林',c:'green'}],
  events:[
-  {t:'AM 07:30',n:'早出發·特急南下',d:'從大阪搭 JR くろしお 前往紀伊勝浦（約2.5小時），車上欣賞海岸風景。',bds:['bd-move|🚃 特急'],star:false,veg:''},
-  {t:'AM 10:30',n:'熊野那智大社·那智瀑布',d:'日本三大瀑布，落差133m。朱紅三重塔與瀑布同框，熊野最具代表性風景。',bds:['bd-temple|⛩ 神社','bd-nature|💧 瀑布'],star:true,veg:''},
-  {t:'AM 11:30',n:'熊野古道·大門坂',d:'石板古道兩側杉木參天，靈氣十足。約2公里輕鬆好走，老少皆宜，無需登山裝備。',bds:['bd-nature|🏔 健行','bd-temple|⛩ 世界遺産'],star:true,veg:''},
-  {t:'PM 13:30',n:'午餐·那智勝浦',d:'小鎮定食屋，以山菜、豆腐料理為主。',bds:['bd-food|🍱 定食'],star:false,veg:'🥬 精進料理定食（豆腐、山菜、醬菜）是熊野特色，告知「肉魚なし」多間食堂可配合。'},
-  {t:'PM 15:00',n:'南部梅林',d:'日本最大梅林，2月初白梅粉梅齊放，香氣四溢。漫步約2小時，入園費 ¥500。',bds:['bd-nature|🌸 梅花'],star:true,veg:''},
-  {t:'PM 18:00',n:'返回大阪',d:'搭 JR 特急返大阪約2小時，晚餐於車站便當或市區覓食。',bds:['bd-move|🚃 返程'],star:false,veg:''},
+  {t:'AM 07:30',n:'早出發·特急南下',d:'從大阪搭 JR くろしお 前往紀伊勝浦（約2.5小時），車上欣賞海岸風景補眠。',bds:['bd-move|🚃 特急'],veg:''},
+  {t:'AM 10:30',n:'熊野那智大社·那智瀑布',d:'日本三大瀑布，落差133m。朱紅三重塔與瀑布同框，熊野最具代表性風景。',bds:['bd-temple|⛩ 神社','bd-nature|💧 瀑布'],veg:''},
+  {t:'AM 11:30',n:'熊野古道·大門坂',d:'石板古道兩側杉木參天，靈氣十足。約2公里輕鬆好走，老少皆宜，無需登山裝備。',bds:['bd-nature|🏔 健行','bd-temple|⛩ 世界遺産'],veg:''},
+  {t:'PM 13:30',n:'午餐·那智勝浦',d:'小鎮定食屋，以山菜、豆腐料理為主。',bds:['bd-food|🍱 定食'],veg:'🥬 精進料理定食（豆腐、山菜、醬菜）是熊野特色，告知「肉魚なし」多間食堂可配合。'},
+  {t:'PM 15:00',n:'南部梅林',d:'日本最大梅林，2月初白梅粉梅齊放，香氣四溢。漫步約2小時，入園費 ¥500。',bds:['bd-nature|🌸 梅花'],veg:''},
+  {t:'PM 18:00',n:'返回大阪',d:'搭 JR 特急返大阪約2小時，晚餐於車站便當或市區覓食。',bds:['bd-move|🚃 返程'],veg:''},
  ],
- tips:['此天單程2.5小時，需早出發；車上可補眠','熊野古道請穿防滑鞋，石板路濕滑','南部梅林入場費 ¥500，約9:00–16:30開放']},
+ tips:['此天單程2.5小時需早出發，車上補眠','熊野古道請穿防滑鞋，石板路濕滑','南部梅林 9:00–16:30 開放，入園費 ¥500']},
 
 {id:2,sub:'2/3',label:'Day 3',title:'大阪深度',loc:'大阪市區全天',
- weather:'☀ 6–11°C',
- transport:'全天市區地鐵＋步行（5–15分）',
- chips:[{t:'🍜 美食',c:''},{t:'🛍 藥妝',c:''},{t:'🏯 大阪城',c:''}],
+ weather:'☀ 6–11°C',transport:'全天市區地鐵＋步行（5–15分）',
+ chips:[{t:'🍜 美食',c:''},{t:'🛍 藥妝',c:''},{t:'🗼 通天閣',c:''}],
  events:[
-  {t:'AM 09:30',n:'大阪城·梅林',d:'梅林2月盛開約1200株，天守閣登頂俯瞰市區。旁有 MIRAIZA 可休息用餐。',bds:['bd-temple|🏯 古蹟','bd-nature|🌸 梅花'],star:true,veg:''},
-  {t:'PM 12:00',n:'黑門市場·午餐',d:'大阪廚房，邊走邊吃串燒、玉子燒、海鮮，熱鬧市場文化。',bds:['bd-food|🍢 串燒','bd-food|🦑 海鮮'],star:false,veg:'🥬 蔬菜天婦羅、玉子燒（蛋素可食）、豆腐甜點，可自由挑選組合。'},
-  {t:'PM 14:00',n:'心齋橋·藥妝掃貨',d:'松本清、大國藥妝、BIC CAMERA 集中地。消費 ¥5000 以上退稅，記得帶護照。',bds:['bd-shop|🛍 藥妝','bd-shop|💊 購物'],star:true,veg:''},
-  {t:'PM 17:30',n:'道頓堀·晚餐',d:'霓虹燈倒映運河的標誌大阪夜景。推薦：一蘭拉麵、元祖串炸（禁二度沾醬！）、大阪燒。',bds:['bd-food|🍜 拉麵','bd-food|🍡 串炸'],star:true,veg:'🥬 「ぼてじゅう」大阪燒有野菜燒き；附近「三松」豆腐懷石有素食套餐可預約。'},
+  {t:'AM 09:30',n:'大阪城·梅林',d:'梅林2月盛開約1200株，天守閣登頂俯瞰市區。旁有 MIRAIZA 可休息用餐。入場費 ¥600。',bds:['bd-temple|🏯 古蹟','bd-nature|🌸 梅花'],veg:''},
+  {t:'AM 11:30',n:'新世界·通天閣',d:'大阪庶民文化發源地，通天閣登高俯瞰。串炸（串かつ）發源地，周邊充滿昭和復古氣氛。',bds:['bd-temple|🗼 通天閣','bd-food|🍡 串炸'],veg:'🥬 「八重勝」串炸有蔬菜類（蓮藕、茄子、香菇），純素食者告知不沾肉湯。'},
+  {t:'PM 13:30',n:'黑門市場·午餐',d:'大阪廚房，邊走邊吃玉子燒、海鮮、豆腐點心，熱鬧市場文化。',bds:['bd-food|🍢 市場','bd-food|🦑 海鮮'],veg:'🥬 蔬菜天婦羅、玉子燒（蛋素可食）、豆腐甜點，可自由挑選組合。'},
+  {t:'PM 15:00',n:'心齋橋·藥妝掃貨',d:'松本清、大國藥妝、BIC CAMERA 集中地。消費 ¥5000 以上退稅，記得帶護照。',bds:['bd-shop|🛍 藥妝','bd-shop|💊 購物'],veg:''},
+  {t:'PM 18:30',n:'道頓堀·晚餐',d:'霓虹燈倒映運河的大阪夜景。推薦：一蘭拉麵、元祖串炸（禁二度沾醬！）、大阪燒。',bds:['bd-food|🍜 拉麵','bd-food|🍡 串炸'],veg:'🥬 「ぼてじゅう」大阪燒有野菜燒き；附近「三松」豆腐懷石有素食套餐可預約。'},
  ],
- tips:['退稅需護照原件，建議全員帶護照','道頓堀晚餐建議17:30前入座，週末人潮大','藥妝集中一人結帳較易達 ¥5000 退稅門檻']},
+ tips:['退稅需護照原件，建議全員攜帶','道頓堀晚餐建議18:00前入座，週末人潮大','藥妝集中一人結帳較易達 ¥5000 退稅門檻']},
 
 {id:3,sub:'2/4',label:'Day 4',title:'京都古都',loc:'大阪 → 京都（28分）',
- weather:'🌤 4–9°C',
- transport:'大阪→京都：JR 新快速 28分｜京都市內嵐電+地鐵',
- chips:[{t:'⛩ 伏見稻荷',c:''},{t:'🎋 嵐山',c:''},{t:'🌸 梅花',c:'green'}],
+ weather:'🌤 4–9°C',transport:'大阪→京都：JR 新快速 28分｜京都市內地鐵+巴士',
+ chips:[{t:'⛩ 伏見稻荷',c:''},{t:'🌿 哲學之道',c:''},{t:'🌸 梅花',c:'green'}],
  events:[
-  {t:'AM 08:30',n:'伏見稻荷大社',d:'數千座朱紅鳥居蜿蜒山間。早晨人少最適合，走前段（30分）或登頂四ツ辻（1.5小時）皆可。',bds:['bd-temple|⛩ 神社','bd-nature|🌲 山林'],star:true,veg:''},
-  {t:'AM 11:00',n:'伏見·清酒老街',d:'清酒名鄉，月桂冠紀念館可試飲。白壁土藏如明信片般靜謐。',bds:['bd-food|🍶 清酒'],star:false,veg:''},
-  {t:'PM 13:00',n:'錦市場·午餐',d:'「京都の台所」380m 室內市場，湯葉、京漬物、抹茶甜點一路嚐過去。',bds:['bd-food|🍡 京料理','bd-food|🍵 抹茶'],star:false,veg:'🥬 「三木鶏卵」玉子燒、炸豆腐、各攤漬物均為純素或蛋素可食。'},
-  {t:'PM 14:30',n:'嵐山·竹林小徑',d:'高聳竹林日光灑落，最夢幻景致。天龍寺（世界遺産）、渡月橋悠閒2–3小時。',bds:['bd-nature|🎋 竹林','bd-temple|⛩ 寺廟'],star:true,veg:'🥬 嵐山「竹路庵」精進素食定食 ¥1500，需前一天預約。'},
-  {t:'PM 18:00',n:'返回大阪 Airbnb（最後一晚）',d:'JR 新快速返大阪（28分），收拾行李準備明天 Check-out 移住京都。',bds:['bd-move|🚃 返程'],star:false,veg:''},
+  {t:'AM 08:30',n:'伏見稻荷大社',d:'數千座朱紅鳥居蜿蜒山間。早晨人少最適合，走前段（30分）或登頂四ツ辻（1.5小時）皆可，免費入場。',bds:['bd-temple|⛩ 神社','bd-nature|🌲 山林'],veg:''},
+  {t:'AM 11:00',n:'伏見·清酒老街',d:'清酒名鄉，月桂冠紀念館可試飲。白壁土藏沿川而行，如明信片般靜謐優美。',bds:['bd-food|🍶 清酒'],veg:''},
+  {t:'PM 13:00',n:'錦市場·午餐',d:'「京都の台所」380m 室內市場，湯葉、京漬物、抹茶甜點一路嚐過去。',bds:['bd-food|🍡 京料理','bd-food|🍵 抹茶'],veg:'🥬 「三木鶏卵」玉子燒、炸豆腐、各攤漬物均為純素或蛋素可食。'},
+  {t:'PM 14:30',n:'哲學之道·南禪寺',d:'沿疏水道的石板小徑，冬日清幽無人群。南禪寺三門壯觀，水路閣古羅馬拱橋令人驚艷。',bds:['bd-nature|🌿 步道','bd-temple|⛩ 寺廟'],veg:''},
+  {t:'PM 17:00',n:'平安神宮·大鳥居',d:'巨大朱紅鳥居為京都地標，境內廣闊莊嚴。2月傍晚人少，可靜心感受古都氛圍。',bds:['bd-temple|⛩ 神社'],veg:''},
+  {t:'PM 19:00',n:'返回大阪（最後一晚）',d:'JR 新快速返大阪（28分），收拾行李準備明天 Check-out 移住京都。',bds:['bd-move|🚃 返程'],veg:''},
  ],
- tips:['伏見稻荷→嵐山可搭嵐電約45分','竹路庵精進料理需提前電話預約','今晚收拾行李，明天移住京都']},
+ tips:['伏見稻荷早上8:00前往人最少','哲學之道→南禪寺步行約20分鐘','今晚收拾行李，明天移住京都']},
 
 {id:4,sub:'2/5',label:'Day 5',title:'京都深度',loc:'大阪退房 → 進駐京都',
- weather:'☀ 5–10°C',
- transport:'大阪→京都：JR 28分｜市區地鐵+巴士',
+ weather:'☀ 5–10°C',transport:'大阪→京都：JR 28分｜市區地鐵+巴士',
  chips:[{t:'⛩ 金閣寺',c:''},{t:'🎎 祇園',c:''},{t:'🌸 北野梅',c:'green'}],
  events:[
-  {t:'AM 09:00',n:'大阪退房·移往京都',d:'Check-out，JR 到京都（28分），寄放行李後輕裝出發。',bds:['bd-move|🚃 移動','bd-hotel|🏠 退房'],star:false,veg:''},
-  {t:'AM 10:30',n:'金閣寺（鹿苑寺）',d:'金箔三層閣倒映鏡湖池，2月清晨偶有薄雪，景色絕倫。入場費 ¥500。',bds:['bd-temple|⛩ 世界遺産'],star:true,veg:''},
-  {t:'AM 11:30',n:'龍安寺·枯山水',d:'日本最著名枯山水庭園，15顆石只能同時看14顆，靜心沉澱。',bds:['bd-temple|⛩ 寺廟','bd-nature|🪨 庭園'],star:true,veg:''},
-  {t:'PM 13:00',n:'午餐·仁和寺周邊',d:'附近多家定食屋以京料理、豆腐鍋為主。',bds:['bd-food|🍱 定食'],star:false,veg:'🥬 仁和寺「花矢倉」精進料理全素無肉，需前一天官網預訂午間精進膳（¥3800）。'},
-  {t:'PM 14:30',n:'北野天滿宮·賞梅',d:'2月初約1500株早梅盛開，學問之神，香氣瀰漫境內。梅苑入場 ¥1200 含茶點。',bds:['bd-temple|⛩ 神社','bd-nature|🌸 梅花'],star:true,veg:''},
-  {t:'PM 16:30',n:'祇園·花見小路',d:'石板路茶屋格子門，傍晚偶有藝妓出巡。一保堂茶舖買正宗抹茶伴手禮。',bds:['bd-temple|🎎 藝妓','bd-shop|🍵 伴手禮'],star:true,veg:''},
-  {t:'PM 19:00',n:'Check-in 京都 Airbnb',d:'入住京都整棟公寓，附近超市可採購早餐食材。',bds:['bd-hotel|🏠 Airbnb'],star:false,veg:''},
+  {t:'AM 09:00',n:'大阪退房·移往京都',d:'Check-out，JR 到京都（28分），寄放行李後輕裝出發。',bds:['bd-move|🚃 移動','bd-hotel|🏠 退房'],veg:''},
+  {t:'AM 10:30',n:'金閣寺（鹿苑寺）',d:'金箔三層閣倒映鏡湖池，2月清晨偶有薄雪，景色絕倫。入場費 ¥500。',bds:['bd-temple|⛩ 世界遺産'],veg:''},
+  {t:'AM 11:30',n:'龍安寺·枯山水',d:'日本最著名枯山水庭園，15顆石只能同時看14顆，靜心沉澱。冬天遊客少，最適合靜思。',bds:['bd-temple|⛩ 寺廟','bd-nature|🪨 庭園'],veg:''},
+  {t:'PM 13:00',n:'午餐·仁和寺周邊',d:'附近多家定食屋以京料理、豆腐鍋為主。',bds:['bd-food|🍱 定食'],veg:'🥬 仁和寺「花矢倉」精進料理全素，需前一天官網預訂午間精進膳（¥3800）。'},
+  {t:'PM 14:30',n:'北野天滿宮·賞梅',d:'2月初約1500株早梅盛開，學問之神，香氣瀰漫境內。梅苑入場 ¥1200 含茶點。',bds:['bd-temple|⛩ 神社','bd-nature|🌸 梅花'],veg:''},
+  {t:'PM 16:30',n:'祇園·花見小路',d:'石板路茶屋格子門，傍晚偶有藝妓出巡。一保堂茶舖買正宗抹茶伴手禮。',bds:['bd-temple|🎎 藝妓','bd-shop|🍵 伴手禮'],veg:''},
+  {t:'PM 19:00',n:'Check-in 京都 Airbnb',d:'入住京都整棟公寓，附近超市可採購早餐食材。',bds:['bd-hotel|🏠 Airbnb'],veg:''},
  ],
- tips:['金閣寺→龍安寺步行15分或搭59號巴士','北野天滿宮梅苑 ¥1200 含茶點，值得進去','祇園花見小路禁拍私人料亭，請遵守標示']},
+ tips:['金閣寺→龍安寺步行15分或搭59號巴士','北野天滿宮梅苑 ¥1200 含茶點，值得入場','祇園花見小路禁拍私人料亭，請遵守標示']},
 
 {id:5,sub:'2/6',label:'Day 6',title:'神戶風情',loc:'京都 → 神戶（32分）→ 泉佐野',
- weather:'🌤 6–11°C',
- transport:'京都→神戶：JR 新快速 32分｜神戶→泉佐野：電車 約60分',
+ weather:'🌤 6–11°C',transport:'京都→神戶：JR 新快速 32分｜神戶→泉佐野：電車 約60分',
  chips:[{t:'🥩 神戶牛',c:''},{t:'🏠 異人館',c:''},{t:'⚠️ 轉宿機場',c:'red'}],
  events:[
-  {t:'AM 09:30',n:'北野異人館街',d:'明治時代洋館聚集地，「風見雞館」最具代表性，紅磚牆異國情調彷彿歐洲小鎮。',bds:['bd-temple|🏠 異人館'],star:true,veg:''},
-  {t:'AM 11:00',n:'南京町·中華街',d:'日本三大中華街之一，豚饅（肉包）必吃，邊走邊吃熱鬧街食。',bds:['bd-food|🥟 小吃'],star:false,veg:'🥬 菜饅（蔬菜包子）純素，芋圓、豆腐花等街食均可選。'},
-  {t:'PM 12:30',n:'神戶牛·午餐',d:'三宮周邊平價鐵板燒午間套餐 ¥3000–¥6000，現場炙烤油脂香氣絕。',bds:['bd-food|🥩 神戶牛','bd-food|🍽 鐵板燒'],star:true,veg:'🥬 MODERNARK 鐵板燒有蔬菜套餐（洋蔥、菇類、季節野菜），告知不加肉類醬汁。'},
-  {t:'PM 14:30',n:'三宮·最後購物',d:'LOFT、元町商店街、藥妝連鎖。今天是最後購物機會，補齊伴手禮清單！',bds:['bd-shop|🛍 購物','bd-shop|💊 藥妝'],star:false,veg:''},
-  {t:'PM 16:30',n:'宅急便·寄行李至機場',d:'在便利商店以ヤマト宅急便寄大件行李至關西機場，隔天取件（¥1500–2000）。',bds:['bd-move|📦 宅急便'],star:false,veg:''},
-  {t:'PM 18:30',n:'移往泉佐野·Check-in',d:'搭 JR→南海至泉佐野（約60分），入住機場周邊最後一晚，早班機友善。',bds:['bd-move|🚃 移動','bd-hotel|🏠 Airbnb'],star:false,veg:''},
+  {t:'AM 09:30',n:'北野異人館街',d:'明治時代洋館聚集地，「風見雞館」最具代表性，紅磚牆異國情調彷彿歐洲小鎮。',bds:['bd-temple|🏠 異人館'],veg:''},
+  {t:'AM 11:00',n:'南京町·中華街',d:'日本三大中華街之一，豚饅（肉包）必吃，邊走邊吃熱鬧街食。',bds:['bd-food|🥟 小吃'],veg:'🥬 菜饅（蔬菜包子）純素，芋圓、豆腐花等街食均可選。'},
+  {t:'PM 12:30',n:'神戶牛·午餐',d:'三宮周邊平價鐵板燒午間套餐 ¥3000–¥6000，現場炙烤油脂香氣絕。',bds:['bd-food|🥩 神戶牛','bd-food|🍽 鐵板燒'],veg:'🥬 MODERNARK 鐵板燒有蔬菜套餐（洋蔥、菇類、季節野菜），告知不加肉類醬汁。'},
+  {t:'PM 14:30',n:'三宮·最後購物',d:'LOFT、元町商店街、藥妝連鎖。今天是最後購物機會，補齊伴手禮清單！',bds:['bd-shop|🛍 購物','bd-shop|💊 藥妝'],veg:''},
+  {t:'PM 16:30',n:'宅急便·寄行李至機場',d:'在便利商店以ヤマト宅急便寄大件行李至關西機場，隔天取件（¥1500–2000）。',bds:['bd-move|📦 宅急便'],veg:''},
+  {t:'PM 18:30',n:'移往泉佐野·Check-in',d:'搭 JR→南海至泉佐野（約60分），入住機場周邊最後一晚，早班機友善。',bds:['bd-move|🚃 移動','bd-hotel|🏠 Airbnb'],veg:''},
  ],
- tips:['神戶牛午餐比晚餐便宜30–50%，強烈建議午間吃','泉佐野有 Rinku Premium Outlets 可入住後逛逛','今晚打包，確認明早出發時間']},
+ tips:['神戶牛午餐比晚餐便宜30–50%，強烈建議午間吃','泉佐野有 Rinku Premium Outlets 可入住後逛','今晚打包，確認明早出發時間']},
 
 {id:6,sub:'2/7',label:'Day 7',title:'岡山·返程',loc:'泉佐野 → 岡山 → 關西機場',
- weather:'☀ 6–10°C',
- transport:'泉佐野→岡山：南海+新幹線 約1.5小時｜岡山→機場：新幹線+Haruka 約1小時20分',
+ weather:'☀ 6–10°C',transport:'泉佐野→岡山：南海+新幹線 約1.5小時｜岡山→機場：新幹線+Haruka 約1小時20分',
  chips:[{t:'🌿 後樂園',c:''},{t:'🏯 岡山城',c:''},{t:'⚠️ 12:20 飛機',c:'red'}],
  events:[
-  {t:'AM 07:00',n:'早餐·出發岡山',d:'泉佐野出發搭南海+新幹線至岡山（約1.5小時），寄放行李輕裝遊覽。',bds:['bd-move|🚄 新幹線'],star:false,veg:''},
-  {t:'AM 09:00',n:'後樂園',d:'日本三名園之一，江戶時代迴遊式庭園，冬日梅花初綻，白鶴漫步草坪。入場費 ¥410。',bds:['bd-nature|🌿 庭園','bd-nature|🌸 梅花'],star:true,veg:''},
-  {t:'AM 10:30',n:'岡山城（烏城）',d:'黑色外牆天守閣，別名「烏城」，與後樂園隔旭川相望，氣質沉穩。',bds:['bd-temple|🏯 古蹟'],star:true,veg:''},
-  {t:'PM 11:30',n:'岡山站·午餐＋伴手禮',d:'吉備糰子、白桃果凍在車站一次購齊。祭り寿司（散壽司）建議坐下享用。',bds:['bd-food|🍣 散壽司','bd-shop|🎁 伴手禮'],star:false,veg:'🥬 吉備糰子（黍餅）純素，岡山站有精進お弁当可預訂。'},
-  {t:'最晚 PM 13:00',n:'✈ 返回關西機場',d:'岡山→新大阪（新幹線17分）→ Haruka 特急→關西機場（50分）。12:20起飛，09:20前需到機場！',bds:['bd-move|✈ 返台'],star:true,veg:''},
+  {t:'AM 07:00',n:'早餐·出發岡山',d:'泉佐野出發搭南海+新幹線至岡山（約1.5小時），寄放行李輕裝遊覽。',bds:['bd-move|🚄 新幹線'],veg:''},
+  {t:'AM 09:00',n:'後樂園',d:'日本三名園之一，江戶時代迴遊式庭園，冬日梅花初綻，白鶴漫步草坪。入場費 ¥410。',bds:['bd-nature|🌿 庭園','bd-nature|🌸 梅花'],veg:''},
+  {t:'AM 10:30',n:'岡山城（烏城）',d:'黑色外牆天守閣，別名「烏城」，與後樂園隔旭川相望，氣質沉穩。',bds:['bd-temple|🏯 古蹟'],veg:''},
+  {t:'PM 11:30',n:'岡山站·午餐＋伴手禮',d:'吉備糰子、白桃果凍在車站一次購齊。祭り寿司（散壽司）建議坐下享用。',bds:['bd-food|🍣 散壽司','bd-shop|🎁 伴手禮'],veg:'🥬 吉備糰子（黍餅）純素，岡山站有精進お弁当可預訂。'},
+  {t:'最晚 PM 13:00',n:'✈ 返回關西機場',d:'岡山→新大阪（新幹線17分）→ Haruka 特急→關西機場（50分）。12:20起飛，09:20前需到機場！',bds:['bd-move|✈ 返台'],veg:''},
  ],
  tips:['⚠️ 12:20 起飛 → 最晚 08:30 離開泉佐野','岡山遊覽控制在3小時內（09:00–12:00）','Haruka 特急持 JR Pass 免費但需預訂座位']},
 ];
@@ -531,10 +494,7 @@ const PACK={
 };
 
 const ST={done:{},pack:{}};
-
-function svgChk(){
-  return`<svg viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>`;
-}
+function svgChk(){return`<svg viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1.5,5 4,7.5 8.5,2.5"/></svg>`}
 
 function buildItinerary(){
   const nav=document.getElementById('day-nav');
@@ -542,7 +502,7 @@ function buildItinerary(){
   DAYS.forEach((d,i)=>{
     const btn=document.createElement('button');
     btn.className='day-btn'+(i===0?' on':'');
-    btn.innerHTML=`<span class="db-sub">${d.sub}</span><span class="db-name">${d.label}</span>`;
+    btn.innerHTML=`<span class="db-s">${d.sub}</span><span class="db-n">${d.label}</span>`;
     btn.onclick=()=>switchDay(i);
     nav.appendChild(btn);
 
@@ -550,25 +510,24 @@ function buildItinerary(){
     panel.className='day-detail'+(i===0?' on':'');
     panel.id='dp-'+i;
 
-    const chipsHtml=d.chips.map(c=>`<span class="dh-chip${c.c?' '+c.c:''}">${c.t}</span>`).join('');
-
-    let html=`<div class="day-hero">
+    const chips=d.chips.map(c=>`<span class="dh-chip${c.c?' '+c.c:''}">${c.t}</span>`).join('');
+    let h=`<div class="day-hero d-px">
       <div class="dh-num">DAY ${i+1} · ${d.sub}</div>
       <div class="dh-title">${d.title}</div>
       <div class="dh-loc">${d.loc}</div>
-      <div class="dh-meta">${chipsHtml}</div>
+      <div class="dh-meta">${chips}</div>
     </div>
-    <div class="transport"><span style="font-size:20px;flex-shrink:0">🚃</span><span style="font-size:13px;line-height:1.7">${d.transport}</span></div>
-    <div class="prog-wrap">
+    <div class="transport d-mx"><span style="font-size:18px;flex-shrink:0">🚃</span><span style="font-size:13px;line-height:1.7">${d.transport}</span></div>
+    <div class="prog-wrap d-mx">
       <div class="pw-top"><span class="pw-label">今日進度</span><span class="pw-count" id="pt-${i}">0 / ${d.events.length}</span></div>
       <div class="pw-track"><div class="pw-fill" id="pf-${i}" style="width:0%"></div></div>
     </div>
-    <div class="ev-list">`;
+    <div class="ev-list ev-grid d-px">`;
 
     d.events.forEach((ev,j)=>{
       const k=`${i}-${j}`;
       const bds=ev.bds.map(b=>{const[c,t]=b.split('|');return`<span class="bd ${c}">${t}</span>`;}).join('');
-      html+=`<div class="ev-card${ev.veg?' veg-card':''}" id="evc-${k}">
+      h+=`<div class="ev-card${ev.veg?' veg-card':''}" id="evc-${k}">
         <div class="ev-time">${ev.t}</div>
         <div class="ev-name">${ev.n}</div>
         <div class="ev-desc">${ev.d}</div>
@@ -578,12 +537,10 @@ function buildItinerary(){
       </div>`;
     });
 
-    html+=`</div><div class="tips-box"><div class="tips-ttl">📌 小提示</div>`;
-    d.tips.forEach(t=>{
-      html+=`<div class="tips-item"><div class="tips-dot"></div><div class="tips-txt">${t}</div></div>`;
-    });
-    html+=`</div>`;
-    panel.innerHTML=html;
+    h+=`</div><div class="tips-box d-mx tips-full"><div class="tips-ttl">📌 小提示</div>`;
+    d.tips.forEach(t=>{h+=`<div class="tips-item"><div class="tips-dot"></div><div class="tips-txt">${t}</div></div>`;});
+    h+=`</div>`;
+    panel.innerHTML=h;
     panels.appendChild(panel);
   });
 }
@@ -591,29 +548,25 @@ function buildItinerary(){
 function switchDay(i){
   document.querySelectorAll('.day-btn').forEach((b,j)=>b.classList.toggle('on',j===i));
   document.querySelectorAll('.day-detail').forEach((p,j)=>p.classList.toggle('on',j===i));
-  const nav=document.getElementById('day-nav');
+  const navEl=document.getElementById('day-nav');
   const btn=document.querySelectorAll('.day-btn')[i];
-  if(btn&&nav) nav.scrollLeft=btn.offsetLeft-nav.offsetWidth/2+btn.offsetWidth/2;
+  if(btn&&navEl) navEl.scrollLeft=btn.offsetLeft-navEl.offsetWidth/2+btn.offsetWidth/2;
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function toggleEv(k,dayIdx){
+function toggleEv(k,di){
   ST.done[k]=!ST.done[k];
   document.getElementById('chk-'+k).classList.toggle('done',ST.done[k]);
   document.getElementById('evc-'+k).classList.toggle('done-card',ST.done[k]);
-  updProg(dayIdx); updGlobal();
+  updProg(di);updGlobal();
 }
-
 function updProg(i){
-  const d=DAYS[i];
-  const tot=d.events.length;
+  const d=DAYS[i],tot=d.events.length;
   const dn=d.events.filter((_,j)=>ST.done[`${i}-${j}`]).length;
-  const pf=document.getElementById('pf-'+i);
-  const pt=document.getElementById('pt-'+i);
-  if(pf) pf.style.width=Math.round(dn/tot*100)+'%';
-  if(pt) pt.textContent=`${dn} / ${tot}`;
+  const pf=document.getElementById('pf-'+i),pt=document.getElementById('pt-'+i);
+  if(pf)pf.style.width=Math.round(dn/tot*100)+'%';
+  if(pt)pt.textContent=`${dn} / ${tot}`;
 }
-
 function updGlobal(){
   let dn=0;
   DAYS.forEach((d,i)=>d.events.forEach((_,j)=>{if(ST.done[`${i}-${j}`])dn++;}));
@@ -622,43 +575,31 @@ function updGlobal(){
 
 function buildPack(){
   const body=document.getElementById('pack-body');
-  let html='';
-  const all=[];
+  let h='';const all=[];
   Object.entries(PACK).forEach(([cat,items])=>{
-    const ico=cat.split(' ')[0];
-    const name=cat.split(' ').slice(1).join(' ');
-    html+=`<div class="sec-hdr" style="padding-bottom:8px"><span class="sec-icon">${ico}</span><span class="sec-ttl" style="font-size:18px">${name}</span></div>`;
-    html+=`<div class="pack-grid">`;
+    const ico=cat.split(' ')[0],name=cat.split(' ').slice(1).join(' ');
+    h+=`<div class="sec-hdr d-px" style="padding-bottom:8px"><span class="sec-icon">${ico}</span><span class="sec-ttl" style="font-size:18px">${name}</span></div>`;
+    h+=`<div class="pack-grid d-px">`;
     items.forEach((item,i)=>{
-      const k=`${cat}-${i}`;
-      all.push(k);
-      html+=`<div class="pack-item" id="pi-${k}" onclick="togglePack('${k}')">
+      const k=`${cat}-${i}`;all.push(k);
+      h+=`<div class="pack-item" id="pi-${k}" onclick="togglePack('${k}')">
         <div class="pack-dot" id="pd-${k}">${svgChk()}</div>
-        <span class="pack-label">${item}</span>
-      </div>`;
+        <span class="pack-label">${item}</span></div>`;
     });
-    html+=`</div>`;
+    h+=`</div>`;
   });
-  body.innerHTML=html;
+  body.innerHTML=h;
   document.querySelectorAll('.pack-dot svg').forEach(s=>s.style.display='none');
   document.getElementById('pack-txt').textContent=`0 / ${all.length}`;
 }
 
 function togglePack(k){
   ST.pack[k]=!ST.pack[k];
-  const item=document.getElementById('pi-'+k);
-  const dot=document.getElementById('pd-'+k);
+  const item=document.getElementById('pi-'+k),dot=document.getElementById('pd-'+k);
   const svg=dot&&dot.querySelector('svg');
   item.classList.toggle('checked',ST.pack[k]);
-  if(dot){
-    dot.style.background=ST.pack[k]?'#2e7d32':'';
-    dot.style.borderColor=ST.pack[k]?'#2e7d32':'';
-  }
-  if(svg) svg.style.display=ST.pack[k]?'block':'none';
-  updPackProg();
-}
-
-function updPackProg(){
+  if(dot){dot.style.background=ST.pack[k]?'#2e7d32':'';dot.style.borderColor=ST.pack[k]?'#2e7d32':'';}
+  if(svg)svg.style.display=ST.pack[k]?'block':'none';
   const all=Object.values(PACK).reduce((a,v)=>a+v.length,0);
   const dn=Object.values(ST.pack).filter(Boolean).length;
   document.getElementById('pack-fill').style.width=Math.round(dn/all*100)+'%';
@@ -667,7 +608,9 @@ function updPackProg(){
 
 function goScreen(id,idx){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  // sync both mobile bottom nav AND desktop sidebar
   document.querySelectorAll('.bnav-btn').forEach((b,i)=>b.classList.toggle('on',i===idx));
+  document.querySelectorAll('.sb-btn').forEach((b,i)=>b.classList.toggle('on',i===idx));
   document.getElementById('s-'+id).classList.add('on');
   window.scrollTo({top:0,behavior:'smooth'});
 }
